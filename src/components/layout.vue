@@ -17,7 +17,7 @@
         </div>
         <div class="header-right">
           <ul>
-            <li>登陆</li>
+            <li><router-link to="/login">登陆</router-link></li>
             <li>注册</li>
           </ul>
         </div>
