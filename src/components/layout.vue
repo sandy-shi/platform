@@ -23,7 +23,9 @@
         </div>
       </div>
     </div>
-    <div class="plate-content">content</div>
+    <div class="plate-content">
+      <div class="contain">content</div>
+    </div>
     <div class="plate-footer">footer</div>
   </div>
 </template>
@@ -88,15 +90,24 @@ a {
   text-decoration: none;
 }
 
+html,body{
+  height: 100%;
+}
 body {
   background: #ffffff;
   font-family: "Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei UI","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
   font-size: 16px;
   color: #444;
 }
+#app{
+  height: 100%;
+}
 .plate-main{
   // width: 1120px;
   // margin: auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 .plate-header{
   width: 100%;
@@ -140,12 +151,18 @@ body {
   }
 }
 .plate-content{
-  width: 1120px;
-  margin: auto;
-  background: yellow;
+  width: 100%;
+  background: blueviolet;
+  flex-grow: 1;
+  .contain{
+    width: 1120px;
+    margin: auto;
+    background: yellow;
+  }
 }
 .plate-footer{
   width: 100%;
+  height: 60px;
   background: grey;
 }
 </style>
