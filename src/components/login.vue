@@ -53,6 +53,7 @@
               <button class="btn" @click="register">完成注册</button>
             </div>
           </div>
+          <p>{{ loginEmail }}</p>
         </div>
       </div>
 
@@ -98,6 +99,14 @@ export default {
       this.showRegister = false
       this.showLogin = true
     }
+  },
+  // 与请求后台接口
+  created () {
+    this.$.axios.get('').then(res => {
+
+    }).catch(err => {
+      console.log('轮播图数据异常', err)
+    })
   }
 }
 </script>
