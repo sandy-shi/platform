@@ -1,31 +1,7 @@
 <template>
-  <div class="plate-main">
-    <div class="plate-header">
-      <div class="header-inner">
-        <div class="logo">
-            <router-link :to="{path: '/'}">
-              <img src="../assets/logo.png">
-            </router-link>
-        </div>
-        <div class="header-nav">
-          <ul>
-            <li>首页</li>
-            <li>页面1</li>
-            <li>页面2</li>
-            <li>页面3</li>
-          </ul>
-        </div>
-        <div class="header-right">
-          <ul>
-            <li><router-link to="/login">登陆</router-link></li>
-            <li><router-link to="/login">注册</router-link></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="plate-content">
+
       <div class="login">
-        <div class="box">
+        <div class="loginbox">
           <ul class="login-tab">
             <li :class="showLogin ? 'active' : ''" @click="toLogin">登陆</li>
             <li :class="showRegister ? 'active' : ''" @click="toRegister">注册</li>
@@ -33,11 +9,11 @@
           <div class="log-form" v-show="showLogin">
             <div class="form-label">邮箱</div>
             <div class="form-input">
-              <input type="text" />
+              <input type="text" v-model="loginEmail"/>
             </div>
             <div class="form-label">密码</div>
             <div class="form-input">
-              <input type="text" />
+              <input type="text" v-model="password" />
             </div>
             <div>
               <input type="checkbox" />
@@ -55,7 +31,7 @@
             <div class="reg-form1" v-show="showRegFirst">
               <div class="form-label">输入您的邮箱</div>
               <div class="form-input">
-                <input type="text" />
+                <input type="text" v-model="loginEmail" />
               </div>
               <button class="btn" @click="toVertifyReg">立即注册</button>
               <div class="lg-bottom reg-bottom">
@@ -66,22 +42,20 @@
               </div>
             </div>
             <div class="reg-form2" v-show="showRegPassword">
-              <div class="form-label">邮箱</div>
+              <div class="form-label">设置密码</div>
               <div class="form-input">
-                <input type="text" />
+                <input type="text" v-model="password" />
               </div>
-              <div class="form-label">密码</div>
+              <div class="form-label">重复密码</div>
               <div class="form-input">
-                <input type="text" />
+                <input type="text" v-model="repassword"/>
               </div>
               <button class="btn" @click="register">完成注册</button>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="plate-footer">footer</div>
-  </div>
+
 </template>
 
 <script>
@@ -91,27 +65,35 @@ export default {
       showLogin: false,
       showRegister: true,
       showRegFirst: true,
-      showRegPassword: false
+      showRegPassword: false,
+      loginEmail: '',
+      password: '',
+      repassword: ''
     }
   },
   methods: {
+    // 去登陆页面
     toLogin () {
       this.showLogin = true
       this.showRegister = false
     },
+    // 跳转到注册页面
     toRegister () {
       this.showRegister = true
       this.showLogin = false
       this.showRegFirst = true
       this.showRegPassword = false
     },
+    // 点击注册之后邮箱验证-》设置密码
     toVertifyReg () {
       this.showRegFirst = false
       this.showRegPassword = true
     },
+    // 点击登陆
     login () {
 
     },
+    // 点击注册
     register () {
       this.showRegister = false
       this.showLogin = true
@@ -127,7 +109,7 @@ export default {
 .login{
   background: #f4fbff;
 }
-.box{
+.loginbox{
   width: 450px;
   height: 450px;
   background: #fff;
