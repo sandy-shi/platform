@@ -89,6 +89,15 @@ export default {
     toVertifyReg () {
       this.showRegFirst = false
       this.showRegPassword = true
+      this.$axios.get('register1', {
+        params: {
+          email: this.loginEmail
+        }
+      }).then(res => {
+
+      }).catch(err => {
+        console.log('邮箱数据异常', err)
+      })
     },
     // 点击登陆
     login () {
@@ -102,11 +111,7 @@ export default {
   },
   // 与请求后台接口
   created () {
-    this.$.axios.get('').then(res => {
 
-    }).catch(err => {
-      console.log('轮播图数据异常', err)
-    })
   }
 }
 </script>
