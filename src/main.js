@@ -12,8 +12,6 @@ Vue.use(ElementUI)
 
 Vue.config.productionTip = false
 
-// 配置公共的url
-Axios.defaults.baseURL = 'www.jloongking.cn:8888/'
 // 配置axios
 Vue.prototype.$axios = Axios
 

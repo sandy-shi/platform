@@ -89,7 +89,7 @@ export default {
     toVertifyReg () {
       this.showRegFirst = false
       this.showRegPassword = true
-      this.$axios.get('register1', {
+      this.$axios.post('/api/register1/', {
         params: {
           email: this.loginEmail
         }
