@@ -1,12 +1,10 @@
 <template>
   <div>
     <swiper :options = "swiperOption">
-      <swiper-slide>I'm Slide 1</swiper-slide>
-      <swiper-slide>I'm Slide 2</swiper-slide>
-      <swiper-slide>I'm Slide 3</swiper-slide>
-      <div class="swiper-pagination "  slot="pagination"></div>
-      <div class="swiper-button-prev swiper-button-black" slot="button-prev"></div>
-      <div class="swiper-button-next swiper-button-black" slot="button-next"></div>
+      <swiper-slide class="swiper-img">I'm Slide 1</swiper-slide>
+      <swiper-slide class="swiper-img">I'm Slide 2</swiper-slide>
+      <swiper-slide class="swiper-img">I'm Slide 3</swiper-slide>
+      <div class="swiper-pagination"  slot="pagination"></div>
     </swiper>
   </div>
 </template>
@@ -16,7 +14,9 @@ export default {
   data () {
     return {
       swiperOption: {
-        notNextTick: true,
+        pagination: {
+          el: '.swiper-pagination'
+        },
         // 循环
         loop: true,
         // 设定初始化时slide的索引
@@ -31,5 +31,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
+.swiper-img{
+  background: yellowgreen;
+  width: 100%;
+  height: 570px;
+}
 </style>

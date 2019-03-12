@@ -1,8 +1,5 @@
 <template>
   <div id="index">
-    <div class="poster">
-      <swiper-block></swiper-block>
-    </div>
     <div class="section">
       <div class="title text-center">
         <p>精品课程训练营</p>
@@ -21,17 +18,19 @@
       </div>
       <start-course></start-course>
     </div>
-    <div class="section">
+    <div class="section teacher">
       <div class="title text-center">
         <p>我们的师资团队</p>
       </div>
       <teacher-info></teacher-info>
     </div>
+    <div class="section">
+
+    </div>
   </div>
 </template>
 
 <script>
-import SwiperBlock from '../components/swiper'
 import HighLevel from '../components/course/highLevel'
 import StartCourse from '../components/course/start'
 import TrainingCourse from '../components/course/training'
@@ -39,7 +38,6 @@ import TeacherInfo from '../pages/default/teacher'
 
 export default {
   components: {
-    SwiperBlock,
     HighLevel,
     StartCourse,
     TrainingCourse,
@@ -54,5 +52,8 @@ export default {
   .title{
     font-size: 20px;
   }
+}
+.teacher{
+  background: url('../assets/images/icon/Bg.png')
 }
 </style>

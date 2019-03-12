@@ -36,6 +36,9 @@
         </div>
       </div>
     </div>
+    <div class="poster">
+      <swiper-block></swiper-block>
+    </div>
     <div class="plate-content">
       <div class="contain">
         <keep-alive>
@@ -48,7 +51,12 @@
 </template>
 
 <script>
+import SwiperBlock from '../components/swiper'
+
 export default {
+  components: {
+    SwiperBlock
+  },
   data () {
     return {
       gridData: [
