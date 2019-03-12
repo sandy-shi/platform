@@ -1,5 +1,8 @@
 <template>
   <div id="index">
+    <div class="poster">
+      <swiper-block></swiper-block>
+    </div>
     <div class="section">
       <div class="title text-center">
         <p>精品课程训练营</p>
@@ -28,6 +31,7 @@
 </template>
 
 <script>
+import SwiperBlock from '../components/swiper'
 import HighLevel from '../components/course/highLevel'
 import StartCourse from '../components/course/start'
 import TrainingCourse from '../components/course/training'
@@ -35,6 +39,7 @@ import TeacherInfo from '../pages/default/teacher'
 
 export default {
   components: {
+    SwiperBlock,
     HighLevel,
     StartCourse,
     TrainingCourse,
