@@ -1,0 +1,90 @@
+<template>
+  <div class="header-inner">
+    <div class="logo">
+      <!-- <router-link :to="{path: '/'}">
+        <img src="../assets/logo.png">
+      </router-link> -->
+    </div>
+    <div class="header-nav">
+      <ul>
+        <li>首页</li>
+        <li>页面1</li>
+        <li>页面2</li>
+        <li>页面3</li>
+      </ul>
+      <div class="head-login text-center"><router-link to="/login">登陆/注册</router-link></div>
+      <!-- <div class="head-login"><router-link to="/register">注册</router-link></div> -->
+    </div>
+    <div class="header-right">
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data () {
+    return {
+
+    }
+  }
+}
+</script>
+
+<style lang="less" scoped>
+.header-inner{
+  width: 100%;
+  height: 60px;
+  background: transparent;
+  position: absolute;
+  top: 30px;
+  z-index: 10;
+  font-size: 16px;
+  .logo{
+    float: left;
+    width: calc(50% - 575px);
+    height: inherit;
+    img{
+      width: 100px;
+      height: 50px;
+      margin: auto;
+    }
+  }
+  .header-nav{
+    width: 1150px;
+    height: inherit;
+    line-height: 60px;
+    float: left;
+    text-align: right;
+    color: @font-white;
+    ul{
+      display: inline-block;
+      li{
+        display: inline-block;
+        color: #d7d5ff;
+      }
+    }
+    .head-login{
+      color: #fff;
+      display: inline-block;
+      background: #5280e7;
+      cursor: pointer;
+      border-radius: 20px;
+      width: 138px;
+      height: 34px;
+      line-height: 34px;
+      padding: 1px 15px;
+    }
+  }
+  .header-right{
+    float: left;
+    width: calc(50% - 575px);
+    height: inherit;
+    line-height: 60px;
+    // ul{
+    //   li{
+    //     display: inline-block;
+    //   }
+    // }
+  }
+}
+</style>

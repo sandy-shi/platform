@@ -23,6 +23,7 @@
       <div class="rt">
         <img src="../../assets/images/icon/map.png" />
         <div class="round china"></div>
+        <div class="round american"></div>
       </div>
     </div>
   </div>
@@ -109,7 +110,7 @@ export default {
         border-radius: 50%;
         position: absolute;
         background: rgba(253, 34, 89, .4);
-        animation: shine 2s ease 0s infinite normal;
+        animation: shine 2s ease-in-out 0.5s infinite normal;
       }
     }
     @keyframes shine {
@@ -131,6 +132,10 @@ export default {
     .china{
       top: 64px;
       left: 42px;
+    }
+    .american{
+      top: 70px;
+      right: 126px;
     }
   }
 }

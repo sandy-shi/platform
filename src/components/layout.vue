@@ -1,40 +1,7 @@
 <template>
   <div class="plate-main">
     <div class="plate-header">
-      <div class="header-inner">
-        <div class="logo">
-            <router-link :to="{path: '/'}">
-              <img src="../assets/logo.png">
-            </router-link>
-        </div>
-        <div class="header-nav">
-          <ul>
-            <li>首页</li>
-            <li>页面1</li>
-            <li>页面2</li>
-            <li>页面3</li>
-          </ul>
-          <div class="head-login"><router-link to="/login">登陆</router-link></div>
-          <div class="head-login"><router-link to="/register">注册</router-link></div>
-          <div class="head-login">
-            <el-popover placement="right" width="400" trigger="click">
-              <el-table :data="gridData">
-                <el-table-column width="150" property="date" label="日期"></el-table-column>
-                <el-table-column width="100" property="name" label="姓名"></el-table-column>
-                <el-table-column width="300" property="address" label="地址"></el-table-column>
-              </el-table>
-              <el-button slot="reference">click 激活</el-button>
-            </el-popover>
-
-          </div>
-        </div>
-        <div class="header-right">
-          <!-- <ul>
-            <li><router-link to="/login">登陆</router-link></li>
-            <li><router-link to="/register">注册</router-link></li>
-          </ul> -->
-        </div>
-      </div>
+      <header-block></header-block>
     </div>
     <div class="poster">
       <swiper-block></swiper-block>
@@ -50,28 +17,17 @@
 </template>
 
 <script>
+import HeaderBlock from '../components/header'
 import SwiperBlock from '../components/swiper'
 
 export default {
   components: {
+    HeaderBlock,
     SwiperBlock
   },
   data () {
     return {
-      gridData: [
-        {
-          date: '2016-05-02', name: '王小虎', address: '上海市普陀区金沙江路1518 弄'
-        },
-        {
-          date: '2016-05-04', name: '王小虎', address: '上海市普陀区金沙江路 1518 弄'
-        },
-        {
-          date: '2016-05-01', name: '王小虎', address: '上海市普陀区金沙江路 1518 弄'
-        },
-        {
-          date: '2016-05-03', name: '王小虎', address: '上海市普陀区金沙江路 1518 弄'
-        }
-      ]
+
     }
   }
 }
@@ -159,57 +115,14 @@ body {
   height: 60px;
   background: #ffffff;
   box-shadow: 2px 2px 2px rgba(220,236,251,.7);
-  .header-inner{
-    width: 100%;
-    .logo{
-      float: left;
-      width: calc(50% - 575px);
-      height: inherit;
-      img{
-        width: 100px;
-        height: 50px;
-        margin: auto;
-      }
-    }
-    .header-nav{
-      width: 1150px;
-      height: inherit;
-      line-height: 60px;
-      float: left;
-      text-align: right;
-      ul{
-        display: inline-block;
-        li{
-          display: inline-block;
-        }
-      }
-      .head-login{
-        color: #fff;
-        display: inline-block;
-        background: blue;
-        cursor: pointer;
-        border-radius: 20px;
-        height: 30px;
-        line-height: 30px;
-        padding: 1px 15px;
-      }
-    }
-    .header-right{
-      float: left;
-      width: calc(50% - 575px);
-      height: inherit;
-      line-height: 60px;
-      // ul{
-      //   li{
-      //     display: inline-block;
-      //   }
-      // }
-    }
-  }
+
 }
 .plate-content{
   width: 100%;
   flex-grow: 1;
+  .contain{
+    position: relative;
+  }
 }
 .plate-footer{
   width: 100%;

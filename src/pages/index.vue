@@ -83,7 +83,7 @@ export default {
 .teacher-bg{
   width: 100%;
   position: absolute;
-  top: 1740px;
+  top: 950px;
   img{
     width: 100%;
   }

@@ -90,6 +90,7 @@ export default {
           display: -webkit-box;
           -webkit-line-clamp: 2;
           -webkit-box-orient: vertical;
+          transition: all 0.5s ease;
         }
       }
       .lg-item{
@@ -99,9 +100,11 @@ export default {
           height: 110px;
           left: 123.5px;
           top: -59px;
+          transition: all 0.5s ease;
         }
         .teacher-top{
           padding-top: 80px;
+          transition: all 0.5s ease;
         }
         &:hover{
           .teacher-img{

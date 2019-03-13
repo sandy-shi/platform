@@ -32,7 +32,7 @@ export default {
 
 <style lang="less" scoped>
 .swiper-img{
-  background: yellowgreen;
+  background: #2e57b4;
   width: 100%;
   height: 570px;
 }
