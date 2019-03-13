@@ -85,6 +85,7 @@ export default {
 .course-item{
   box-shadow: 2px 2px 20px rgba(72,72,72,.16);
   margin-top: 45px;
+  border-radius: 22px;
   .course-img{
     height: 140px;
   }

@@ -211,10 +211,6 @@ body {
 .plate-content{
   width: 100%;
   flex-grow: 1;
-  .contain{
-    width: 1150px;
-    margin: auto;
-  }
 }
 .plate-footer{
   width: 100%;
