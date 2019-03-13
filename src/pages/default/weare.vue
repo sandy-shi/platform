@@ -22,6 +22,7 @@
       </div>
       <div class="rt">
         <img src="../../assets/images/icon/map.png" />
+        <div class="round china"></div>
       </div>
     </div>
   </div>
@@ -48,18 +49,24 @@ export default {
 }
 .content{
   width: 100%;
-  padding-top: 50px;
+  padding: 50px 0;
+  overflow: hidden;
   .lf{
     width: 50%;
     float: left;
+    padding-top: 20px;
     .row-top{
       width: 100%;
+      height: 90px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid @gray-blue;
       .rt-lf{
         width: 50%;
         float: left;
         .connect{
           color: @gray;
           font-size: 16px;
+          padding-top: 10px;
         }
         .detail{
           font-size: 13px;
@@ -81,10 +88,50 @@ export default {
         }
       }
     }
+    .row-bottom{
+      font-size: 13px;
+      color: @gray-blue;
+      padding-top: 40px;
+    }
   }
   .rt{
     width: 50%;
     float: left;
+    position: relative;
+    .round{
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #fd2259;
+      position: absolute;
+      &::after{
+        content: '';
+        border-radius: 50%;
+        position: absolute;
+        background: rgba(253, 34, 89, .4);
+        animation: shine 2s ease 0s infinite normal;
+      }
+    }
+    @keyframes shine {
+      0% {
+        width: 0px;
+        height: 0px;
+        border-radius: 50%;
+        left: 5px;
+        top: 5px;
+      }
+      100%{
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        left: -3px;
+        top: -3px;
+      }
+    }
+    .china{
+      top: 64px;
+      left: 42px;
+    }
   }
 }
 </style>

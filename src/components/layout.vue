@@ -46,7 +46,6 @@
         </keep-alive>
       </div>
     </div>
-    <div class="plate-footer">footer</div>
   </div>
 </template>
 
