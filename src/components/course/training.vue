@@ -86,6 +86,9 @@ export default {
   box-shadow: 2px 2px 20px rgba(72,72,72,.16);
   margin-top: 45px;
   border-radius: 22px;
+  &:hover{
+    box-shadow: 2px 12px 14px -3px rgba(72, 72, 72, 0.16);
+  }
   .course-img{
     height: 140px;
   }

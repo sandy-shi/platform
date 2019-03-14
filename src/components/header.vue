@@ -58,9 +58,11 @@ export default {
     color: @font-white;
     ul{
       display: inline-block;
+      padding-right: 80px;
       li{
         display: inline-block;
         color: #d7d5ff;
+        padding-right: 10px;
       }
     }
     .head-login{
@@ -73,6 +75,7 @@ export default {
       height: 34px;
       line-height: 34px;
       padding: 1px 15px;
+      box-shadow: 0px 28px 16px -6px rgba(39, 76, 160, .6);
     }
   }
   .header-right{

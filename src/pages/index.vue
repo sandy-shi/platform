@@ -37,7 +37,7 @@
     <div class="teacher-bg">
       <img src="../assets/images/icon/Bg.png" />
     </div>
-    <div class="section">
+    <div class="section weare">
       <div class="container">
         <div class="title text-center">
           <p>人工只能+在线教育：我们是教育行业的变革者</p>
@@ -83,9 +83,12 @@ export default {
 .teacher-bg{
   width: 100%;
   position: absolute;
-  top: 950px;
+  top: 1050px;
   img{
     width: 100%;
   }
+}
+.weare{
+  background: linear-gradient(0.99turn, rgba(226,235,252,.6), rgba(226,235,252,0) 15%);
 }
 </style>
