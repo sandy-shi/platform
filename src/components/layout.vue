@@ -117,6 +117,9 @@ body {
   box-shadow: 2px 2px 2px rgba(220,236,251,.7);
 
 }
+.poster{
+  position: relative;
+}
 .plate-content{
   width: 100%;
   flex-grow: 1;

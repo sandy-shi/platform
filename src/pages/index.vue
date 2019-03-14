@@ -3,7 +3,11 @@
     <div class="section">
       <div class="container">
         <div class="title text-center">
-          <p>精品课程训练营</p>
+          <div class="content">
+            <img src="../assets/images/icon/blue.png"/>
+            <p>精品课程训练营</p>
+            <img src="../assets/images/icon/blue.png"/>
+          </div>
         </div>
         <training-course></training-course>
       </div>
@@ -11,7 +15,11 @@
     <div class="section">
       <div class="container">
         <div class="title text-center">
-          <p>高级课程训练营</p>
+          <div class="content">
+            <img src="../assets/images/icon/purple.png"/>
+            <p>高级课程训练营</p>
+            <img src="../assets/images/icon/purple.png"/>
+          </div>
         </div>
         <high-level></high-level>
       </div>
@@ -19,7 +27,11 @@
     <div class="section">
       <div class="container">
         <div class="title text-center">
-          <p>基础入门精品课</p>
+          <div class="content">
+            <img src="../assets/images/icon/green.png"/>
+            <p>基础入门精品课</p>
+            <img src="../assets/images/icon/green.png"/>
+          </div>
         </div>
         <start-course></start-course>
       </div>
@@ -78,6 +90,19 @@ export default {
   .title{
     color: @gray;
     font-size: 20px;
+    .content{
+      height: 40px;
+      line-height: 40px;
+      img{
+        display: inline-block;
+        vertical-align: middle;
+      }
+      p{
+        display: inline-block;
+        vertical-align: middle;
+        padding: 0 10px;
+      }
+    }
   }
 }
 .teacher-bg{
