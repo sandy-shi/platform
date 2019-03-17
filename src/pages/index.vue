@@ -1,5 +1,11 @@
 <template>
   <div id="index">
+    <div class="plate-header">
+      <header-block></header-block>
+    </div>
+    <div class="poster">
+      <swiper-block></swiper-block>
+    </div>
     <div class="section">
       <div class="container">
         <div class="title text-center">
@@ -61,6 +67,8 @@
 </template>
 
 <script>
+import HeaderBlock from '../components/header'
+import SwiperBlock from '../components/swiper'
 import HighLevel from '../components/course/highLevel'
 import StartCourse from '../components/course/start'
 import TrainingCourse from '../components/course/training'
@@ -69,6 +77,8 @@ import WeAre from '../pages/default/weare'
 
 export default {
   components: {
+    HeaderBlock,
+    SwiperBlock,
     HighLevel,
     StartCourse,
     TrainingCourse,
@@ -79,6 +89,16 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.plate-header{
+  position: absolute;
+  width: 100%;
+  height: 60px;
+  background: #ffffff;
+  box-shadow: 2px 2px 2px rgba(220,236,251,.7);
+}
+.poster{
+  position: relative;
+}
 .section{
   margin-top: 60px;
   position: relative;

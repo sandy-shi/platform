@@ -1,11 +1,6 @@
 <template>
   <div class="plate-main">
-    <div class="plate-header">
-      <header-block></header-block>
-    </div>
-    <div class="poster">
-      <swiper-block></swiper-block>
-    </div>
+
     <div class="plate-content">
       <div class="contain">
         <keep-alive>
@@ -110,16 +105,6 @@ body {
   flex-direction: column;
   height: 100%;
 }
-.plate-header{
-  width: 100%;
-  height: 60px;
-  background: #ffffff;
-  box-shadow: 2px 2px 2px rgba(220,236,251,.7);
-
-}
-.poster{
-  position: relative;
-}
 .plate-content{
   width: 100%;
   flex-grow: 1;
@@ -131,5 +116,9 @@ body {
   width: 100%;
   height: 60px;
   background: grey;
+}
+.container{
+  width: @main-width;
+  margin: auto;
 }
 </style>

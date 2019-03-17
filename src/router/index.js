@@ -6,6 +6,8 @@ import IndexPage from '@/pages/index'
 import Login from '@/components/login'
 import Register from '@/components/register'
 
+import InfoMachineLearning from '@/pages/course-introduce/mechine-learning'
+
 Vue.use(Router)
 
 export default new Router({
@@ -24,6 +26,11 @@ export default new Router({
       path: '/register',
       name: 'Register',
       component: Register
+    },
+    {
+      path: '/info-machine-learning',
+      name: 'InfoMachineLearning',
+      component: InfoMachineLearning
     }
   ]
 })
