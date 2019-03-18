@@ -1,3 +1,4 @@
+<!--首页基础入门精品课-->
 <template>
   <div class="course-list">
     <el-row :gutter="20">

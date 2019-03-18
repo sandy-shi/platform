@@ -1,3 +1,4 @@
+<!--首页高级课程训练营-->
 <template>
   <div class="course-list">
     <el-row :gutter="20">

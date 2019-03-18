@@ -98,6 +98,7 @@ export default {
 }
 .poster{
   position: relative;
+  height: @poster-height;
 }
 .section{
   margin-top: 60px;
@@ -128,7 +129,7 @@ export default {
 .teacher-bg{
   width: 100%;
   position: absolute;
-  top: 1050px;
+  top: 1750px;
   img{
     width: 100%;
   }

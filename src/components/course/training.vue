@@ -1,5 +1,7 @@
+<!--首页训练营课程-->
 <template>
   <div class="course-list">
+    <!--elementui 布局-->
     <el-row :gutter="20">
       <el-col :span="8" v-for="(item, index) in courseData" :key='index'>
         <div class="grid-content bg-purple course-item">

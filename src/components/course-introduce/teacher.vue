@@ -2,7 +2,7 @@
   <div class="teacher">
     <div class="box">
       <div class="lf">
-        <img  />
+        <img  src="../../assets/images/course-introduce/teacher/zhou-big.png"/>
       </div>
       <div class="rt">
         <p class="name">周景阳</p>
@@ -32,6 +32,7 @@ export default {
   margin: auto;
   background: #121b2e;
   box-shadow: 0px 8px 10px -2px rgba(25, 38, 65, 0.8);
+  border-radius: 3px;
   .box{
     overflow: hidden;
     .lf{

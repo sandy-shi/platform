@@ -121,4 +121,10 @@ body {
   width: @main-width;
   margin: auto;
 }
+.course-intro{
+  background: @black-blue;
+  .section-pb100{
+    padding-bottom: 100px;
+  }
+}
 </style>
