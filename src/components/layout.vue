@@ -85,6 +85,11 @@ a {
 .text-right{
   text-align: right;
 }
+.center-block{
+  display: block;
+  margin-left: 0;
+  margin-right: 0;
+}
 // 页面总样式
 html,body{
   height: 100%;

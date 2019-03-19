@@ -3,6 +3,9 @@
     <div class="banner section-pb100">
       <banner-block></banner-block>
     </div>
+    <div class="section-pb100">
+      <adjust-people></adjust-people>
+    </div>
     <div class="teacher section-pb100">
       <div class="container">
         <teacher></teacher>
@@ -22,6 +25,7 @@
 
 <script>
 import BannerBlock from '../../components/course-introduce/poster'
+import AdjustPeople from '../../components/course-introduce/adjust-people'
 import Teacher from '../../components/course-introduce/teacher'
 import Team from '../../components/course-introduce/team'
 import Program from '../../components/course-introduce/program'
@@ -30,6 +34,7 @@ import Category from '../../components/course-introduce/category'
 export default {
   components: {
     BannerBlock,
+    AdjustPeople,
     Teacher,
     Team,
     Program,
