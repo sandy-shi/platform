@@ -1,5 +1,8 @@
 <template>
   <div class="container">
+    <div class="section-title">
+      <p class="text-center">{{ title }}</p>
+    </div>
     <div class="item" v-for="(item,index) in adjustPeople" :key="index">
       <p class="letter">{{ item.letter }}</p>
       <div class="detaile"><p>{{ item.content }}</p></div>
@@ -11,6 +14,7 @@
 export default {
   data () {
     return {
+      title: '适合什么样的人群',
       adjustPeople: [
         {
           letter: 'A',
@@ -39,6 +43,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.section-title{
+  padding-bottom: 70px;
+}
 .item{
   width: 560px;
   height: 38px;

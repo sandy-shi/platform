@@ -1,6 +1,9 @@
 <template>
   <div class="team">
     <div class="container">
+      <div class="section-title">
+        <p class="text-center">{{ title }}</p>
+      </div>
       <div class="teamdetail">
         <ul>
           <li v-for="(item,index) in teacherInfo" :key="index">
@@ -20,6 +23,7 @@
 export default {
   data () {
     return {
+      title: '研发团队',
       teacherInfo: [
         {
           // 用require请求图片地址，在webpack中会将图片图片来当做模块来用，因为是动态加载的，所以url-loader将无法解析图片地址，然后npm run dev 或者npm run build之后导致路径没有被加工
@@ -51,6 +55,9 @@ export default {
 
 <style lang="less" scoped>
 .team{
+  .section-title{
+    padding-bottom: 100px;
+  }
   .teamdetail{
     position: relative;
     overflow-x: scroll;

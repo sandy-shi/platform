@@ -1,6 +1,9 @@
 <template>
   <div class="program">
     <div class="container">
+      <div class="section-title">
+        <p class="text-center">{{ lists.length }}大项目带你飞</p>
+      </div>
       <div class="item" v-for="(item,index) in lists" :key="index">
         <div class="lf">
           <img :src="item.img" />
@@ -54,6 +57,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.section-title{
+  padding-bottom: 80px;
+}
 .program{
   .item{
     width: 100%;

@@ -87,8 +87,8 @@ a {
 }
 .center-block{
   display: block;
-  margin-left: 0;
-  margin-right: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 // 页面总样式
 html,body{
@@ -130,6 +130,11 @@ body {
   background: @black-blue;
   .section-pb100{
     padding-bottom: 100px;
+  }
+  .section-title{
+    font-size: 38px;
+    color: @font-white;
+    padding-bottom: 50px;
   }
 }
 </style>

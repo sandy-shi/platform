@@ -2,6 +2,9 @@
 <template>
   <div class="chapter">
     <div class="container">
+      <div class="section-title">
+        <p class="text-center">{{ title }}</p>
+      </div>
       <div v-for="(item, index) in lists" :key="index">
         <!-- :item传值给自组建，把list里的每一次循环的值传给子组件 -->
         <collapse-item :item = 'item'></collapse-item>
@@ -20,6 +23,7 @@ export default {
   },
   data () {
     return {
+      title: '课程大纲',
       // 大纲数据
       lists: [
         {
@@ -81,5 +85,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
+.section-title{
+  padding-bottom: 110px;
+}
 </style>
