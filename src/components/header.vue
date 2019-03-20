@@ -7,7 +7,7 @@
     </div>
     <div class="header-nav">
       <ul>
-        <li>首页</li>
+        <li><router-link to="/">首页</router-link></li>
         <li>页面1</li>
         <li>页面2</li>
         <li>页面3</li>

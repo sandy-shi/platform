@@ -1,6 +1,7 @@
 <template>
   <div>
     <img src="../../assets/images/course-introduce/mechine-learning/bg.png" />
+    <slot></slot>
   </div>
 </template>
 

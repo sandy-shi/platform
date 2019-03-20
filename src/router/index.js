@@ -8,6 +8,10 @@ import Register from '@/components/register'
 
 import InfoMachineLearning from '@/pages/course-introduce/mechine-learning'
 
+import Order from '@/pages/order/order'
+
+import My from '@/pages/my/index'
+
 Vue.use(Router)
 
 export default new Router({
@@ -31,6 +35,16 @@ export default new Router({
       path: '/info-machine-learning',
       name: 'InfoMachineLearning',
       component: InfoMachineLearning
+    },
+    {
+      path: '/order',
+      name: 'Order',
+      component: Order
+    },
+    {
+      path: '/my',
+      name: 'My',
+      component: My
     }
   ]
 })

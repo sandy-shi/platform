@@ -3,8 +3,8 @@
     <div class="content" @click="clickHandler()">
       <div class="chapter-name">
         <p class="fname">第{{ item.id + 1 }}章：{{ item.name }}</p>
-        <span class="rowdown" v-show="rowdown"></span>
-        <span class="rowup" v-show="rowup"></span>
+        <span class="rowdown" v-show="rowdown" v-if="item.subChapter.length > 0"></span>
+        <span class="rowup" v-show="rowup" v-if="item.subChapter.length > 0"></span>
       </div>
       <div class="subchapter" v-show="isSubchapter" v-for="(sub, subid) in item.subChapter" :key="subid">
         <p class="subname">{{ item.id+1 }}.{{ subid+1 }}  {{ sub.name }}</p>

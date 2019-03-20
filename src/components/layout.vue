@@ -104,8 +104,6 @@ body {
   height: 100%;
 }
 .plate-main{
-  // width: 1120px;
-  // margin: auto;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -113,8 +111,10 @@ body {
 .plate-content{
   width: 100%;
   flex-grow: 1;
+  display: flex;
   .contain{
     position: relative;
+    display: flex;
   }
 }
 .plate-footer{
@@ -132,7 +132,7 @@ body {
     padding-bottom: 100px;
   }
   .section-title{
-    font-size: 38px;
+    font-size: 1.78125rem;
     color: @font-white;
     padding-bottom: 50px;
   }

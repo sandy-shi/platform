@@ -5,7 +5,7 @@
     </div>
     <div class="items">
       <div class="item" v-for="(item,index) in lists" :key="index">
-        <img class="center-block" :src="item.imgsrc" />
+        <div class="itemimg"><img class="center-block" :src="item.imgsrc" /></div>
         <p class="info text-center">{{ item.info }}</p>
         <p class="content">{{ item.content }}</p>
       </div>
@@ -51,6 +51,9 @@ export default {
   .item{
     width: 260px;
     float: left;
+    .itemimg{
+      height: 47px;
+    }
     .info{
       width: 184px;
       height: 34px;

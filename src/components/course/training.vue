@@ -6,10 +6,10 @@
       <el-col :span="8" v-for="(item, index) in courseData" :key='index'>
         <div class="grid-content bg-purple course-item">
           <div class="course-img">
-            <a><img src="@/assets/images/course/1.png"></a>
+            <a><router-link to="/info-machine-learning"><img src="@/assets/images/course/1.png"></router-link></a>
           </div>
           <div class="course-info">
-            <p class="subscribe">{{ item.subscribe }}</p>
+            <p class="subscribe"><router-link to="/info-machine-learning">{{ item.subscribe }}</router-link></p>
             <div class="detail">
               <p class="pretime">上期开课时间：{{ item.preTime }}<span>{{ item.isFull }}</span></p>
               <p class="nextime">下期开课时间：{{ item.nextTime }}<span>仅剩{{ item.remainNum }}位</span></p>
