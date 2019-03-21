@@ -111,10 +111,10 @@ body {
 .plate-content{
   width: 100%;
   flex-grow: 1;
-  display: flex;
+  // display: flex;
   .contain{
     position: relative;
-    display: flex;
+    // display: flex;
   }
 }
 .plate-footer{

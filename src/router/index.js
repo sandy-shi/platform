@@ -11,6 +11,8 @@ import InfoMachineLearning from '@/pages/course-introduce/mechine-learning'
 import Order from '@/pages/order/order'
 
 import My from '@/pages/my/index'
+import MyInfo from '@/pages/my/info/myinfo'
+import Study from '@/pages/my/study/study'
 
 Vue.use(Router)
 
@@ -44,7 +46,20 @@ export default new Router({
     {
       path: '/my',
       name: 'My',
-      component: My
+      component: My,
+      // redirect: '/my/study',
+      children: [
+        {
+          path: 'myinfo',
+          name: 'MyInfo',
+          component: MyInfo
+        },
+        {
+          path: 'study',
+          name: 'Study',
+          component: Study
+        }
+      ]
     }
   ]
 })

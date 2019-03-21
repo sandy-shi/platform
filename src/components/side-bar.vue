@@ -3,39 +3,59 @@
     <div class="logo">
       <img src="../assets/images/icon/logo.png" />
     </div>
-    <el-menu>
-      <el-submenu index="1">
-        <template slot="title" class="fefe">我的学习</template>
-          <el-menu-item index="1-1">选项1</el-menu-item>
-          <el-menu-item index="1-2">选项2</el-menu-item>
-      </el-submenu>
-      <el-submenu index="2">
-        <template slot="title">个人信息</template>
-          <el-menu-item index="2-1">选项1</el-menu-item>
-          <el-menu-item index="2-2">选项2</el-menu-item>
-      </el-submenu>
-      <el-menu-item index="link2">
-        <i class="el-icon-document"></i>
-        <span slot="title">导航二</span>
-        <!-- <el-menu-item index="link2">
-          <i class="el-icon-document"></i>
-          <span slot="title">导航三</span>
-        </el-menu-item> -->
-      </el-menu-item>
+    <el-menu v-for="(item,index) in myLists" :key="index">
+      <el-submenu index="index">
+        <!-- <router-link :to="{path: item.path}"> -->
+          <template slot="title" class="fefe"><router-link :to="{path: item.path}">{{ item.name }}</router-link></template>
+        <!-- </router-link> -->
 
+          <!-- <el-menu-item index="1-1">选项1</el-menu-item>
+          <el-menu-item index="1-2">选项2</el-menu-item> -->
+      </el-submenu>
     </el-menu>
+    <div>返回首页</div>
   </div>
 </template>
 
 <script>
 export default {
+  // props: ['myLists'],
   data () {
     return {
-
+      myLists: [
+        {
+          name: '我的学习',
+          path: 'study',
+          active: true
+        },
+        {
+          name: '我的信息',
+          path: 'myinfo',
+          active: false
+        }
+      ]
     }
   }
 }
 </script>
+
+<style lang="less">
+// 这个去掉scoped，改成全局属性，是为了全局修改element-ui侧边栏的整体样式
+.el-menu{
+  background: none;
+  .el-submenu{
+    .el-submenu__title{
+      color: @font-white;
+      &:hover{
+        background: none;
+      }
+    }
+    .el-menu-item{
+      color: @font-white;
+    }
+  }
+}
+</style>
 
 <style lang="less" scoped>
 .sidebar-container{
@@ -50,21 +70,5 @@ export default {
       width: 100%;
     }
   }
-  .el-menu{
-    background: none;
-    .el-submenu{
-      div{
-        color: @font-white;
-      }
-      .el-menu-item{
-        color: red;
-      }
-
-    }
-  }
-  .el-menu-item{
-    color: #fff;
-  }
-
 }
 </style>
