@@ -142,5 +142,8 @@ body {
   background: @bg-white;
   margin: auto;
   margin-top: 44px;
+  margin-bottom: 44px;
+  border-radius: 4px;
+  box-shadow:0px 3px 8px 0px rgba(201,201,201,0.44);
 }
 </style>
