@@ -111,10 +111,10 @@ body {
 .plate-content{
   width: 100%;
   flex-grow: 1;
-  // display: flex;
   .contain{
     position: relative;
-    // display: flex;
+    // 设置成flex布局，是为了后续侧边栏布局的时候，当页面高度小于屏幕高度时，可以让侧边栏充满整个屏幕
+    display: flex;
   }
 }
 .plate-footer{
@@ -136,5 +136,11 @@ body {
     color: @font-white;
     padding-bottom: 50px;
   }
+}
+.aside-main-width{
+  width: @mid-width;
+  background: @bg-white;
+  margin: auto;
+  margin-top: 44px;
 }
 </style>

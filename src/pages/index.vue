@@ -1,5 +1,5 @@
 <template>
-  <div id="index">
+  <div id="index" class="index-page">
     <div class="plate-header">
       <header-block></header-block>
     </div>
@@ -89,6 +89,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.index-page{
+  width: 100%;
+}
 .plate-header{
   position: absolute;
   width: 100%;

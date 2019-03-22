@@ -37,7 +37,7 @@ export default {
   background: transparent;
   position: absolute;
   top: 30px;
-  z-index: 10;
+  z-index: 100;
   font-size: 16px;
   .logo{
     float: left;

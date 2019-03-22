@@ -87,18 +87,26 @@ export default {
     },
     // 点击注册之后邮箱验证-》设置密码
     toVertifyReg () {
+      let params = new URLSearchParams()
+      let register2url = location.href
+      params.append('email', this.loginEmail)
+      params.append('register2url', register2url)
       this.showRegFirst = false
       this.showRegPassword = true
-      this.$axios.post('/api/register1/', {
-        params: {
-          email: this.loginEmail
-        }
+      this.$axios({
+        method: 'post',
+        url: '/api/register1/',
+        headers: {
+          'Content-type': 'application/x-www-form-urlencoded'
+        },
+        data: params
       }).then(res => {
 
       }).catch(err => {
         console.log('邮箱数据异常', err)
       })
     },
+
     // 点击登陆
     login () {
 

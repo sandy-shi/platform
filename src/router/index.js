@@ -13,6 +13,8 @@ import Order from '@/pages/order/order'
 import My from '@/pages/my/index'
 import MyInfo from '@/pages/my/info/myinfo'
 import Study from '@/pages/my/study/study'
+import Test from '@/pages/my/test/test'
+import Test1 from '@/pages/my/test/test1'
 
 Vue.use(Router)
 
@@ -47,7 +49,7 @@ export default new Router({
       path: '/my',
       name: 'My',
       component: My,
-      // redirect: '/my/study',
+      redirect: '/my/study',
       children: [
         {
           path: 'myinfo',
@@ -58,6 +60,19 @@ export default new Router({
           path: 'study',
           name: 'Study',
           component: Study
+        },
+        {
+          path: 'test',
+          name: 'Test',
+          component: Test,
+          redirect: '/test/test1',
+          children: [
+            {
+              path: 'test1',
+              name: 'Test1',
+              component: Test1
+            }
+          ]
         }
       ]
     }

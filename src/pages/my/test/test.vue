@@ -1,6 +1,6 @@
 <template>
-  <div class="aside-main-width">
-    <p>mystudy</p>
+  <div>
+    <p>test-test</p>
   </div>
 </template>
 
