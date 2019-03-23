@@ -6,7 +6,7 @@
         <p class="text-center">{{ title }}</p>
       </div>
       <div v-for="(item, index) in lists" :key="index">
-        <!-- :item传值给自组建，把list里的每一次循环的值传给子组件 -->
+        <!-- :item传值给子组建，把list里的每一次循环的值传给子组件 -->
         <collapse-item :item = 'item'></collapse-item>
       </div>
     </div>
