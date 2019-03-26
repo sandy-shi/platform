@@ -12,7 +12,7 @@
         </div>
         <div class="form-label">密码</div>
         <div class="form-input">
-          <input type="text" v-model="password" />
+          <input type="password" v-model="password" />
         </div>
         <div>
           <input type="checkbox" />
@@ -53,7 +53,6 @@
           <button class="btn" @click="register">完成注册</button>
         </div>
       </div>
-      <p>{{ loginEmail }}</p>
     </div>
   </div>
 </template>
@@ -62,8 +61,8 @@
 export default {
   data () {
     return {
-      showLogin: false,
-      showRegister: true,
+      showLogin: true,
+      showRegister: false,
       showRegFirst: true,
       showRegPassword: false,
       loginEmail: '',
@@ -108,15 +107,14 @@ export default {
       if (!this.emailErrors.status) {
         this.errorText = this.emailErrors.errorText
       } else {
-        this.showRegFirst = false
-        this.showRegPassword = true
+
         this.$axios.post('/api/user/register1', {
           params: {
             email: this.loginEmail,
             register2url: register2url
           }
         }).then(res => {
-          console.log(res)
+
         }).catch(err => {
           console.log('邮箱数据异常', err)
         })
@@ -129,7 +127,16 @@ export default {
     },
     // 点击登陆
     login () {
+      this.$axios.post('api/user/login', {
+        params: {
+          username: this.loginEmail,
+          password: this.password
+        }
+      }).then(res => {
 
+      }).catch(err => {
+        console.log('登陆失败', err)
+      })
     }
   },
   // 与请求后台接口

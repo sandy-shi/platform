@@ -9,12 +9,13 @@
         <div class="reg-form2" v-show="showRegPassword">
           <div class="form-label">设置密码</div>
           <div class="form-input">
-            <input type="text" v-model="password" />
+            <input type="password" v-model="password" />
           </div>
           <div class="form-label">重复密码</div>
           <div class="form-input">
-            <input type="text" v-model="repassword"/>
+            <input type="password" v-model="repassword"/>
           </div>
+          <p class="errtext">{{ errorText }}</p>
           <button class="btn" @click="register">完成注册</button>
         </div>
       </div>
@@ -38,12 +39,17 @@ export default {
     // 检查两次输入的密码是否一致
     passErrors () {
       let errorText, status
-      if (this.password === this.repassword) {
-        status = true
-        errorText = ''
-      } else {
+      if (!this.password) {
         status = false
-        errorText = '两次输入的密码不一致'
+        errorText = '请输入密码'
+      } else {
+        if (this.password === this.repassword) {
+          status = true
+          errorText = ''
+        } else {
+          status = false
+          errorText = '两次输入的密码不一致'
+        }
       }
       return {
         status,
@@ -68,7 +74,7 @@ export default {
     register () {
       let email, token
       if (this.passErrors.status) {
-        let params = window.location.search.split('&')
+        let params = window.location.href.split('?')[1].split('&')
         if (params.length > 0) {
           email = unescape(params[0].split('=')[1])
           token = unescape(params[1].split('=')[1])
@@ -80,17 +86,17 @@ export default {
               token: token
             }
           }).then(res => {
-            console.log(res)
+            if (res.status === 200) {
+              this.$router.push({path: '/login'})
+            }
           }).catch(err => {
             console.log('注册失败', err)
           })
-          console.log(email)
-          console.log(token)
         } else {
           console.log('返回邮箱token失败')
         }
       } else {
-        console.log('两次输入的密码不一致')
+        this.errorText = this.passErrors.errorText
       }
     }
   }
