@@ -16,6 +16,8 @@ import Study from '@/pages/my/study/study'
 import Test from '@/pages/my/test/test'
 import Test1 from '@/pages/my/test/test1'
 
+import myCourse from '@/pages/my/course/course'
+
 Vue.use(Router)
 
 export default new Router({
@@ -75,6 +77,11 @@ export default new Router({
           ]
         }
       ]
+    },
+    {
+      path: '/mycourse',
+      name: 'myCourse',
+      component: myCourse
     }
   ]
 })

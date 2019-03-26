@@ -1,62 +1,61 @@
 <template>
-
-      <div class="login">
-        <div class="loginbox">
-          <ul class="login-tab">
-            <li :class="showLogin ? 'active' : ''" @click="toLogin">登陆</li>
-            <li :class="showRegister ? 'active' : ''" @click="toRegister">注册</li>
-          </ul>
-          <div class="log-form" v-show="showLogin">
-            <div class="form-label">邮箱</div>
-            <div class="form-input">
-              <input type="text" v-model="loginEmail"/>
-            </div>
-            <div class="form-label">密码</div>
-            <div class="form-input">
-              <input type="text" v-model="password" />
-            </div>
-            <div>
-              <input type="checkbox" />
-              <span>7天内自动登陆</span>
-            </div>
-            <button class="btn" @click="login">立即登陆</button>
-            <div class="lg-bottom">
-              <a class="find">找回密码</a>
-              <span class="line">|</span>
-              <span class="content">还没有注册账号？</span>
-              <a class="reg" @click="toRegister">立即注册</a>
-            </div>
-          </div>
-          <div class="reg-form" v-show="showRegister">
-            <div class="reg-form1" v-show="showRegFirst">
-              <div class="form-label">输入您的邮箱</div>
-              <div class="form-input">
-                <input type="text" v-model="loginEmail" />
-              </div>
-              <button class="btn" @click="toVertifyReg">立即注册</button>
-              <div class="lg-bottom reg-bottom">
-                <p class="content">注册即表示同意隐私策略和服务条款</p>
-                <div class="tologin">已有账号？
-                  <a class="login" @click="toLogin">登陆</a>
-                </div>
-              </div>
-            </div>
-            <div class="reg-form2" v-show="showRegPassword">
-              <div class="form-label">设置密码</div>
-              <div class="form-input">
-                <input type="text" v-model="password" />
-              </div>
-              <div class="form-label">重复密码</div>
-              <div class="form-input">
-                <input type="text" v-model="repassword"/>
-              </div>
-              <button class="btn" @click="register">完成注册</button>
-            </div>
-          </div>
-          <p>{{ loginEmail }}</p>
+  <div class="login">
+    <div class="loginbox">
+      <ul class="login-tab">
+        <li :class="showLogin ? 'active' : ''" @click="toLogin">登陆</li>
+        <li :class="showRegister ? 'active' : ''" @click="toRegister">注册</li>
+      </ul>
+      <div class="log-form" v-show="showLogin">
+        <div class="form-label">邮箱</div>
+        <div class="form-input">
+          <input type="text" v-model="loginEmail"/>
+        </div>
+        <div class="form-label">密码</div>
+        <div class="form-input">
+          <input type="text" v-model="password" />
+        </div>
+        <div>
+          <input type="checkbox" />
+          <span>7天内自动登陆</span>
+        </div>
+        <button class="btn" @click="login">立即登陆</button>
+        <div class="lg-bottom">
+          <a class="find">找回密码</a>
+          <span class="line">|</span>
+          <span class="content">还没有注册账号？</span>
+          <a class="reg" @click="toRegister">立即注册</a>
         </div>
       </div>
-
+      <div class="reg-form" v-show="showRegister">
+        <div class="reg-form1" v-show="showRegFirst">
+          <div class="form-label">输入您的邮箱</div>
+          <div class="form-input">
+            <input type="text" v-model="loginEmail" />
+          </div>
+          <p class="errtext">{{ errorText }}</p>
+          <button class="btn" @click="toVertifyReg">立即注册</button>
+          <div class="lg-bottom reg-bottom">
+            <p class="content">注册即表示同意隐私策略和服务条款</p>
+            <div class="tologin">已有账号？
+              <a class="login" @click="toLogin">登陆</a>
+            </div>
+          </div>
+        </div>
+        <div class="reg-form2" v-show="showRegPassword">
+          <div class="form-label">设置密码</div>
+          <div class="form-input">
+            <input type="text" v-model="password" />
+          </div>
+          <div class="form-label">重复密码</div>
+          <div class="form-input">
+            <input type="text" v-model="repassword"/>
+          </div>
+          <button class="btn" @click="register">完成注册</button>
+        </div>
+      </div>
+      <p>{{ loginEmail }}</p>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -69,7 +68,25 @@ export default {
       showRegPassword: false,
       loginEmail: '',
       password: '',
-      repassword: ''
+      repassword: '',
+      errorText: ''
+    }
+  },
+  computed: {
+    // 检查用户输入的邮箱是否合法
+    emailErrors () {
+      let errorText, status
+      if (!/@/g.test(this.loginEmail)) {
+        status = false
+        errorText = '邮箱格式不正确'
+      } else {
+        status = true
+        errorText = ''
+      }
+      return {
+        status,
+        errorText
+      }
     }
   },
   methods: {
@@ -87,28 +104,32 @@ export default {
     },
     // 点击注册之后邮箱验证-》设置密码
     toVertifyReg () {
-      let register2url = location.href
-      this.showRegFirst = false
-      this.showRegPassword = true
-      this.$axios.post('/api/login/register1/', {
-        params: {
-          email: this.loginEmail,
-          register2url: register2url
-        }
-      }).then(res => {
-
-      }).catch(err => {
-        console.log('邮箱数据异常', err)
-      })
-    },
-    // 点击登陆
-    login () {
-
+      let register2url = 'http://localhost:8080/#/register'
+      if (!this.emailErrors.status) {
+        this.errorText = this.emailErrors.errorText
+      } else {
+        this.showRegFirst = false
+        this.showRegPassword = true
+        this.$axios.post('/api/user/register1', {
+          params: {
+            email: this.loginEmail,
+            register2url: register2url
+          }
+        }).then(res => {
+          console.log(res)
+        }).catch(err => {
+          console.log('邮箱数据异常', err)
+        })
+      }
     },
     // 点击注册
     register () {
       this.showRegister = false
       this.showLogin = true
+    },
+    // 点击登陆
+    login () {
+
     }
   },
   // 与请求后台接口
@@ -133,6 +154,10 @@ export default {
   border-radius: 4px;
   margin: auto;
   margin-top: 4%;
+}
+.errtext{
+  color: @red;
+  font-size: 14px;
 }
 .login-tab{
   padding: 30px 40px;
