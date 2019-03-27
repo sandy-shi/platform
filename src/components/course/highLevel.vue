@@ -5,13 +5,14 @@
       <el-col :span="6" v-for="(item, index) in courseData" :key='index'>
         <div class="grid-content bg-purple course-item">
           <div class="course-img">
-            <a><img src="@/assets/images/course/2.png"></a>
+            <a><router-link to="/info-machine-learning"><img src="@/assets/images/course/2.png"></router-link></a>
+            <!-- <a><img :src="item.pic" /></a> -->
           </div>
           <div class="course-info">
-            <p class="subscribe">{{ item.subscribe }}</p>
+            <p class="subscribe">{{ item.content }}</p>
             <div class="detail">
               <p class="level">{{ item.level }}</p>
-              <p class="price">¥<span>{{ item.price }}</span></p>
+              <p class="price">¥<span>{{ item.cost }}</span></p>
             </div>
           </div>
         </div>
@@ -25,30 +26,33 @@
 export default {
   data () {
     return {
-      courseData: [
-        {
-          subscribe: 'Python编程搭配数学基础，再你必备的AI基础课',
-          level: '高级',
-          price: 16998
-        },
-        {
-          subscribe: 'Python编程搭配数学基础，再你必备的AI基础课',
-          level: '高级',
-          price: 16998
-        },
-        {
-          subscribe: 'Python编程搭配数学基础，再你必备的AI基础课',
-          level: '初级',
-          price: 16998
-        },
-        {
-          subscribe: 'Python编程搭配数学基础，再你必备的AI基础课',
-          level: '中级',
-          price: 16998
-        }
-      ]
+      // courseData: [
+      //   {
+      //     subscribe: 'Python编程搭配数学基础，再你必备的AI基础课',
+      //     level: '高级',
+      //     price: 16998
+      //   },
+      //   {
+      //     subscribe: 'Python编程搭配数学基础，再你必备的AI基础课',
+      //     level: '高级',
+      //     price: 16998
+      //   },
+      //   {
+      //     subscribe: 'Python编程搭配数学基础，再你必备的AI基础课',
+      //     level: '初级',
+      //     price: 16998
+      //   },
+      //   {
+      //     subscribe: 'Python编程搭配数学基础，再你必备的AI基础课',
+      //     level: '中级',
+      //     price: 16998
+      //   }
+      // ]
     }
-  }
+  },
+  // 接收index传过来的课程值
+  props: ['courseData']
+
 }
 </script>
 

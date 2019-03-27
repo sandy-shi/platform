@@ -61,6 +61,7 @@
 export default {
   data () {
     return {
+      mystudy: '我的学习',
       showLogin: true,
       showRegister: false,
       showRegFirst: true,
@@ -107,7 +108,6 @@ export default {
       if (!this.emailErrors.status) {
         this.errorText = this.emailErrors.errorText
       } else {
-
         this.$axios.post('/api/user/register1', {
           params: {
             email: this.loginEmail,
@@ -133,7 +133,12 @@ export default {
           password: this.password
         }
       }).then(res => {
-
+        console.log()
+        if (res.status === 200) {
+          // 把登录信息存储到session中
+          sessionStorage.mystudy = this.mystudy
+          this.$router.push({path: '/'})
+        }
       }).catch(err => {
         console.log('登陆失败', err)
       })

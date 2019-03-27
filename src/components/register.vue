@@ -74,6 +74,7 @@ export default {
     register () {
       let email, token
       if (this.passErrors.status) {
+        console.log(location.pathname)
         let params = window.location.href.split('?')[1].split('&')
         if (params.length > 0) {
           email = unescape(params[0].split('=')[1])

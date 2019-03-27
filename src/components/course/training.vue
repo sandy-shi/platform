@@ -6,14 +6,16 @@
       <el-col :span="8" v-for="(item, index) in courseData" :key='index'>
         <div class="grid-content bg-purple course-item">
           <div class="course-img">
-            <a><router-link to="/info-machine-learning"><img src="@/assets/images/course/1.png"></router-link></a>
+            <a>
+              <router-link to="/info-machine-learning"><img src="@/assets/images/course/1.png"></router-link>
+            </a>
           </div>
           <div class="course-info">
-            <p class="subscribe"><router-link to="/info-machine-learning">{{ item.subscribe }}</router-link></p>
+            <p class="subscribe"><router-link to="/info-machine-learning">{{ item.content }}</router-link></p>
             <div class="detail">
-              <p class="pretime">上期开课时间：{{ item.preTime }}<span>{{ item.isFull }}</span></p>
-              <p class="nextime">下期开课时间：{{ item.nextTime }}<span>仅剩{{ item.remainNum }}位</span></p>
-              <p class="price">¥{{ item.price }} </p>
+              <p class="pretime">上期开课时间：{{ item.last_time }}<span>{{ item.isFull }}</span></p>
+              <p class="nextime">下期开课时间：{{ item.next_time }}<span>仅剩{{ item.max_people_num }}位</span></p>
+              <p class="price">¥{{ item.cost }} </p>
             </div>
           </div>
         </div>
@@ -26,34 +28,37 @@
 export default {
   data () {
     return {
-      courseData: [
-        {
-          subscribe: 'Python编程搭配数学基础，再你必备的AI基础课',
-          preTime: '12月10日',
-          nextTime: '4月7日',
-          price: 16998,
-          isFull: '已满',
-          remainNum: 30
-        },
-        {
-          subscribe: 'Python编程搭配数学基础，再你必备的AI基础课',
-          preTime: '12月10日',
-          nextTime: '4月7日',
-          price: 16998,
-          isFull: '已满',
-          remainNum: 30
-        },
-        {
-          subscribe: 'Python编程搭配数学基础，再你必备的AI基础课',
-          preTime: '12月10日',
-          nextTime: '4月7日',
-          price: 16998,
-          isFull: '已满',
-          remainNum: 30
-        }
-      ]
+      // courseData: [
+      //   {
+      //     subscribe: 'Python编程搭配数学基础，再你必备的AI基础课',
+      //     preTime: '12月10日',
+      //     nextTime: '4月7日',
+      //     price: 16998,
+      //     isFull: '已满',
+      //     remainNum: 30
+      //   },
+      //   {
+      //     subscribe: 'Python编程搭配数学基础，再你必备的AI基础课',
+      //     preTime: '12月10日',
+      //     nextTime: '4月7日',
+      //     price: 16998,
+      //     isFull: '已满',
+      //     remainNum: 30
+      //   },
+      //   {
+      //     subscribe: 'Python编程搭配数学基础，再你必备的AI基础课',
+      //     preTime: '12月10日',
+      //     nextTime: '4月7日',
+      //     price: 16998,
+      //     isFull: '已满',
+      //     remainNum: 30
+      //   }
+      // ]
     }
-  }
+  },
+  // 接收index传过来的课程值
+  props: ['courseData']
+
 }
 </script>
 
@@ -101,6 +106,7 @@ export default {
       line-height: 24px;
       padding: 25px 0;
       font-size: 16px;
+      height: 48px;
     }
     .detail{
       font-size: 14px;

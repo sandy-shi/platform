@@ -15,7 +15,7 @@
             <img src="../assets/images/icon/blue.png"/>
           </div>
         </div>
-        <training-course></training-course>
+        <training-course :courseData = 'trainingCourse'></training-course>
       </div>
     </div>
     <div class="section">
@@ -27,7 +27,7 @@
             <img src="../assets/images/icon/purple.png"/>
           </div>
         </div>
-        <high-level></high-level>
+        <high-level :courseData = 'highCourse'></high-level>
       </div>
     </div>
     <div class="section">
@@ -39,7 +39,7 @@
             <img src="../assets/images/icon/green.png"/>
           </div>
         </div>
-        <start-course></start-course>
+        <start-course :courseData = 'startCourse'></start-course>
       </div>
 
     </div>
@@ -84,6 +84,24 @@ export default {
     TrainingCourse,
     TeacherInfo,
     WeAre
+  },
+  data () {
+    return {
+      trainingCourse: [],
+      highCourse: [],
+      startCourse: []
+    }
+  },
+  created () {
+    this.$axios.post('/api/index', {
+    }).then(res => {
+      this.trainingCourse = res.data.trainingcourses
+      this.highCourse = res.data.heighcourses
+      this.startCourse = res.data.startcourses
+      console.log(res)
+    }).catch(err => {
+      console.log('数据异常', err)
+    })
   }
 }
 </script>
@@ -132,12 +150,13 @@ export default {
 .teacher-bg{
   width: 100%;
   position: absolute;
-  top: 1750px;
+  bottom: 450px;
   img{
     width: 100%;
   }
 }
 .weare{
+  // 设置底部渐变色
   background: linear-gradient(0.99turn, rgba(226,235,252,.6), rgba(226,235,252,0) 15%);
 }
 </style>

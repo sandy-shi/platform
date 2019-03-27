@@ -12,8 +12,12 @@
         <li>页面2</li>
         <li>页面3</li>
       </ul>
-      <div class="head-login text-center"><router-link to="/login">登陆/注册</router-link></div>
-      <!-- <div class="head-login"><router-link to="/register">注册</router-link></div> -->
+      <div class="head-login text-center">
+        <keep-alive>
+          <router-link to="/login" v-if="!mystudy">登陆/注册</router-link>
+          <router-link to="/my"  v-if="mystudy">{{ mystudy }}</router-link>
+        </keep-alive>
+      </div>
     </div>
     <div class="header-right">
     </div>
@@ -24,7 +28,8 @@
 export default {
   data () {
     return {
-
+      // 接收session中存储的登陆信息
+      mystudy: sessionStorage.mystudy
     }
   }
 }
