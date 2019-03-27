@@ -5,7 +5,7 @@
       <el-col :span="6" v-for="(item, index) in courseData" :key='index'>
         <div class="grid-content bg-purple course-item">
           <div class="course-img">
-            <a><router-link to="/info-machine-learning"><img src="@/assets/images/course/3.png"></router-link></a>
+            <a><router-link to="/info-machine-learning"><img :src="item.pic"></router-link></a>
           </div>
           <div class="course-info">
             <p class="subscribe">{{ item.content }}</p>

@@ -7,7 +7,7 @@
         <div class="grid-content bg-purple course-item">
           <div class="course-img">
             <a>
-              <router-link to="/info-machine-learning"><img src="@/assets/images/course/1.png"></router-link>
+              <router-link to="/info-machine-learning"><img :src="item.pic"></router-link>
             </a>
           </div>
           <div class="course-info">

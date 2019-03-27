@@ -1,8 +1,6 @@
 <template>
   <div class="my">
-    <side-bar>
-
-    </side-bar>
+    <side-bar :myLists = 'myLists'></side-bar>
     <div class="right-container">
       <keep-alive>
         <router-view></router-view>
@@ -19,7 +17,18 @@ export default {
   },
   data () {
     return {
-
+      myLists: [
+        {
+          name: '我的学习',
+          path: 'study',
+          active: true
+        },
+        {
+          name: '我的信息',
+          path: 'myinfo',
+          active: false
+        }
+      ]
     }
   }
 }

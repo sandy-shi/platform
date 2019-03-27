@@ -20,21 +20,10 @@
 
 <script>
 export default {
-  // props: ['myLists'],
+  props: ['myLists'],
   data () {
     return {
-      myLists: [
-        {
-          name: '我的学习',
-          path: 'study',
-          active: true
-        },
-        {
-          name: '我的信息',
-          path: 'myinfo',
-          active: false
-        }
-      ]
+
     }
   }
 }
