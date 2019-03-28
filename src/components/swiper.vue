@@ -86,6 +86,7 @@ export default {
         font-size: 16px;
         padding-left: 15px;
         padding-bottom: 10px;
+        background: inherit;
       }
     }
   }

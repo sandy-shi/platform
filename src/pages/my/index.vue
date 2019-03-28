@@ -45,11 +45,4 @@ export default {
   background: #F5F8FA;
   width: 87.5%;
 }
-.test{
-  .testli{
-    height: 40px;
-    line-height: 40px;
-    color: #fff;
-  }
-}
 </style>
