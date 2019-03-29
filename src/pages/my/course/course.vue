@@ -6,9 +6,11 @@
         <div class="course-top">
           <p class="plan">默认教学计划</p>
           <div class="courseinfo">
+            <div class="progress">
+                <canvas-circle :percent="percent"></canvas-circle>
+              </div>
             <div class="main-content">
               <div class="course-progress">
-                <div class="round"></div>
               </div>
               <div class="items">
                 <div class="item">
@@ -56,12 +58,15 @@
 
 <script>
 import SideBar from '../../../components/side-bar'
+import CanvasCircle from '../../../components/canvasCircle'
 export default {
   components: {
-    SideBar
+    SideBar,
+    CanvasCircle
   },
   data () {
     return {
+      percent: 35,
       myLists: [
         {
           name: '第三章：条件控制',
@@ -117,12 +122,20 @@ export default {
   .plan{
     font-size: 24px;
     color: @gray-dark;
-
   }
   .courseinfo{
     background-color: #fafafa;
     padding: 33px 15px;
     margin: 65px -15px 20px;
+    .progress{
+      position: absolute;
+      top: 134px;
+      width: 150px;
+      height: 150px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0px 0px 18px 2px rgba(41,94,64,.1);
+    }
     .main-content{
       width: 100%;
       // 清除float的影响
@@ -132,12 +145,6 @@ export default {
         height: 56px;
         float: left;
         position: relative;
-        .round{
-          background: red;
-          width: 90px;
-          height: 90px;
-          position: absolute;
-        }
       }
       .items{
         width: 66%;
@@ -145,10 +152,15 @@ export default {
         .item{
           display: inline-block;
           width: 32%;
+          // 任务数量字体间隔扩大
+          &:first-child{
+            .item-cont{
+              letter-spacing: 2px;
+            }
+          }
           .line1{
             color: @gray-darker;
             margin-bottom: 15px;
-
           }
           .item-cont{
             font-size: 16px;
@@ -174,11 +186,26 @@ export default {
 }
 .course-content{
   padding: 20px;
-
+  padding-bottom: 40px;
+  position: relative;
   .chapter{
     padding-bottom: 70px;
     padding-left: 32px;
     border-left: 1px solid @blue;
+    // 把第一个模块突出来的竖线隐藏掉
+    &:first-child{
+      &:before{
+        content: '';
+        display: inline-block;
+        border-left: 1px solid @bg-white;
+        position: absolute;
+        left: 20px;
+        height: 13px;
+      }
+    }
+    &:last-child{
+      padding-bottom: 0;
+    }
     .top{
       font-size: 0;
       position: relative;
