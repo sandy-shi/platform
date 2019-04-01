@@ -133,10 +133,12 @@ export default {
           password: this.password
         }
       }).then(res => {
-        console.log()
-        if (res.status === 200) {
+        console.log(res.data.userid)
+        if (res.data.code === 2000) {
           // 把登录信息存储到session中
           sessionStorage.mystudy = this.mystudy
+          sessionStorage.useremail = this.loginEmail
+          sessionStorage.userId = res.data.userid
           this.$router.push({path: '/'})
         }
       }).catch(err => {

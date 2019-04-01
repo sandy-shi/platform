@@ -2,7 +2,7 @@
   <div class="order">
     <div class="container">
       <div class="header">
-        <img src='../../assets/images/icon/logobule.png' />
+        <router-link to="/"><img src='../../assets/images/icon/logobule.png' /></router-link>
       </div>
       <div class="box">
         <p class="time">请在15分钟内完成支付；我们以为您预定了本期班级席位；</p>
@@ -41,6 +41,7 @@ export default {
 .order{
   background: #f2f2f2;
   padding: 92px 0;
+  width: 100%;
   .header{
     padding-bottom: 46px;
   }

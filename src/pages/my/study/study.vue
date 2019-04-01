@@ -30,6 +30,17 @@ export default {
         }
       ]
     }
+  },
+  created () {
+    this.$axios.post('/api/user/getallcourse', {
+      params: {
+        userid: sessionStorage.userId
+      }
+    }).then(res => {
+      console.log(res)
+    }).catch(err => {
+      console.log('获取课程信息失败' + err)
+    })
   }
 }
 </script>

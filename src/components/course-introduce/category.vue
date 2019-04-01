@@ -7,7 +7,7 @@
       </div>
       <div v-for="(item, index) in lists" :key="index">
         <!-- :item传值给子组建，把list里的每一次循环的值传给子组件 -->
-        <collapse-item :item = 'item'></collapse-item>
+        <collapse-item :item = 'item' :indexs = 'index'></collapse-item>
       </div>
     </div>
 
@@ -23,64 +23,65 @@ export default {
   },
   data () {
     return {
-      title: '课程大纲',
+      title: '课程大纲'
       // 大纲数据
-      lists: [
-        {
-          id: 0,
-          name: 'Python基础语法',
-          type: 'chapter',
-          subChapter: [
-          ]
-        },
-        {
-          id: 1,
-          name: 'Python工程结构',
-          type: 'chapter',
-          subChapter: [
-            {
-              id: 0,
-              name: '工程结构与命名规范'
-            },
-            {
-              id: 1,
-              name: '模块与包'
-            }
-          ]
-        },
-        {
-          id: 2,
-          name: '搭建基于规则的ChatBot',
-          type: 'program',
-          subChapter: [
-            {
-              id: 0,
-              name: 'Python编程风格'
-            },
-            {
-              id: 1,
-              name: '基本数据类型'
-            }
-          ]
-        },
-        {
-          id: 3,
-          name: 'Python基础语法',
-          type: 'chapter',
-          subChapter: [
-            {
-              id: 0,
-              name: 'Python编程风格'
-            },
-            {
-              id: 1,
-              name: '基本数据类型'
-            }
-          ]
-        }
-      ]
+      // lists: [
+      //   {
+      //     id: 0,
+      //     name: 'Python基础语法',
+      //     type: 'chapter',
+      //     subChapter: [
+      //     ]
+      //   },
+      //   {
+      //     id: 1,
+      //     name: 'Python工程结构',
+      //     type: 'chapter',
+      //     subChapter: [
+      //       {
+      //         id: 0,
+      //         name: '工程结构与命名规范'
+      //       },
+      //       {
+      //         id: 1,
+      //         name: '模块与包'
+      //       }
+      //     ]
+      //   },
+      //   {
+      //     id: 2,
+      //     name: '搭建基于规则的ChatBot',
+      //     type: 'program',
+      //     subChapter: [
+      //       {
+      //         id: 0,
+      //         name: 'Python编程风格'
+      //       },
+      //       {
+      //         id: 1,
+      //         name: '基本数据类型'
+      //       }
+      //     ]
+      //   },
+      //   {
+      //     id: 3,
+      //     name: 'Python基础语法',
+      //     type: 'chapter',
+      //     subChapter: [
+      //       {
+      //         id: 0,
+      //         name: 'Python编程风格'
+      //       },
+      //       {
+      //         id: 1,
+      //         name: '基本数据类型'
+      //       }
+      //     ]
+      //   }
+      // ]
     }
-  }
+  },
+  props: ['lists']
 }
 </script>
 

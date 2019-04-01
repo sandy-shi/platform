@@ -6,7 +6,7 @@
         <div class="bannerbox">
           <div class="title">初级机器学习训练营</div>
           <div class="subtitle">项目+原理+代码 快速入门人工智能领域</div>
-          <button class="btn center-block"><router-link to="/order">购买课程</router-link></button>
+          <button class="btn center-block"><router-link :to="{ path: '/order', query: { courseId: courseId }}">购买课程</router-link></button>
         </div>
       </banner-block>
     </div>
@@ -25,10 +25,10 @@
       <team></team>
     </div>
     <div class="section-pb100">
-      <program></program>
+      <program :lists='programLists'></program>
     </div>
     <div class="section-pb100">
-      <category></category>
+      <category :lists='categoryLists'></category>
     </div>
   </div>
 </template>
@@ -56,8 +56,25 @@ export default {
   },
   data () {
     return {
-
+      courseId: '',
+      categoryLists: [],
+      programLists: []
     }
+  },
+  created () {
+    let courseId = location.href.split('?')[1].split('=')[1]
+    this.courseId = courseId
+    this.$axios.post('/api/course/index', {
+      params: {
+        id: courseId
+      }
+    }).then(res => {
+      console.log(res)
+      this.categoryLists = res.data.course[0].catalogs
+      this.programLists = res.data.course[0].objects
+    }).catch(err => {
+      console.log('获取信息失败', err)
+    })
   }
 }
 </script>

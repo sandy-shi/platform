@@ -98,7 +98,6 @@ export default {
       this.trainingCourse = res.data.trainingcourses
       this.highCourse = res.data.heighcourses
       this.startCourse = res.data.startcourses
-      console.log(res)
     }).catch(err => {
       console.log('数据异常', err)
     })

@@ -64,12 +64,51 @@ export default {
         email: '',
         payPassword: '',
         tel: ''
-      }
+      },
+      userEmail: sessionStorage.useremail
     }
+  },
+  created () {
+    this.$axios.post('/api/user/getuserinfo', {
+      params: {
+        userid: sessionStorage.userId
+      }
+    }).then(res => {
+      if (res.data.email !== null || res.data.email !== '') {
+        this.form.email = res.data.email
+      }
+      if (res.data.nickname !== null || res.data.nickname !== '') {
+        this.form.nicname = res.data.nickname
+      }
+      if (res.data.password !== null || res.data.password !== '') {
+        this.form.pass = res.data.password
+      }
+      if (res.data.paypassword !== null || res.data.paypassword !== '') {
+        this.form.payPassword = res.data.paypassword
+      }
+      if (res.data.telphone !== null || res.data.telphone !== '') {
+        this.form.tel = res.data.telphone
+      }
+    }).catch(err => {
+      console.log('获取用户信息失败' + err)
+    })
   },
   methods: {
     onSubmit () {
-      console.log('submit')
+      this.$axios.post('/api/user/setuserinfo', {
+        params: {
+          userid: sessionStorage.userId,
+          nickname: this.form.nicname,
+          password: this.form.pass,
+          email: this.form.email,
+          paypassword: this.form.payPassword,
+          telphone: this.form.tel
+        }
+      }).then(res => {
+        console.log(res)
+      }).catch(err => {
+        console.log('修改信息失败' + err)
+      })
     }
   }
 }

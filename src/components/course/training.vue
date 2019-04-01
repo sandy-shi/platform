@@ -6,12 +6,12 @@
       <el-col :span="8" v-for="(item, index) in courseData" :key='index'>
         <div class="grid-content bg-purple course-item">
           <div class="course-img">
-            <a>
-              <router-link to="/info-machine-learning"><img :src="item.pic"></router-link>
-            </a>
+            <a v-if="item.url"><router-link :to="{ path: item.url, query: { courseId: item.id }}"><img :src="item.pic"></router-link></a>
+            <a v-else><img :src="item.pic"></a>
           </div>
           <div class="course-info">
-            <p class="subscribe"><router-link to="/info-machine-learning">{{ item.content }}</router-link></p>
+            <p class="subscribe" v-if="item.url"><router-link :to="{ path: item.url, query: { courseId: item.id }}">{{ item.content }}</router-link></p>
+            <p class="subscribe" v-else>{{ item.content }}</p>
             <div class="detail">
               <p class="pretime">上期开课时间：{{ item.last_time }}<span>{{ item.isFull }}</span></p>
               <p class="nextime">下期开课时间：{{ item.next_time }}<span>仅剩{{ item.max_people_num }}位</span></p>
