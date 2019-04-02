@@ -17,6 +17,7 @@ import Test from '@/pages/my/test/test'
 import Test1 from '@/pages/my/test/test1'
 
 import myCourse from '@/pages/my/course/course'
+import myTask from '@/pages/my/course/task'
 
 Vue.use(Router)
 
@@ -82,6 +83,11 @@ export default new Router({
       path: '/mycourse',
       name: 'myCourse',
       component: myCourse
+    },
+    {
+      path: '/mytask',
+      name: 'myTask',
+      component: myTask
     }
   ]
 })

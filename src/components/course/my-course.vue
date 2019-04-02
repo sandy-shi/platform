@@ -11,10 +11,11 @@
             <p class="title">{{ item.title }}</p>
             <div class="progress">
               <p class="pfont">学习进度</p>
-              <el-progress :percentage="item.percent" color="#567fe3"></el-progress>
+              <!-- 在这里使用过滤器，将字符串百分比转换成数值类型的百分比值，因为elementui的进度条要求percentage为数值型，如果字符串也可以显示，但是eslint会报错 -->
+              <el-progress :percentage="item.dopercent | stringToNum" color="#567fe3"></el-progress>
             </div>
             <div class="line"></div>
-            <button class="btn">继续学习</button>
+            <button class="btn"><router-link :to="{path: '/mycourse', query: {courseId: item.id}}">继续学习</router-link></button>
           </div>
         </el-col>
       </el-row>
@@ -24,7 +25,13 @@
 
 <script>
 export default {
-  props: ['courseLists', 'tags']
+  props: ['courseLists', 'tags'],
+  // 把字符串转换成数字类型
+  filters: {
+    stringToNum (value) {
+      return parseInt(value)
+    }
+  }
 }
 </script>
 

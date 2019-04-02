@@ -19,16 +19,17 @@ export default {
     return {
       tags: '学习中',
       tagsjoin: '加入的课程',
-      courseLists: [
-        {
-          title: '知识图谱入门班',
-          percent: 13
-        },
-        {
-          title: '深度学习入门班',
-          percent: 16
-        }
-      ]
+      courseLists: []
+      // courseLists: [
+      //   {
+      //     title: '知识图谱入门班',
+      //     percent: 13
+      //   },
+      //   {
+      //     title: '深度学习入门班',
+      //     percent: 16
+      //   }
+      // ]
     }
   },
   created () {
@@ -37,7 +38,8 @@ export default {
         userid: sessionStorage.userId
       }
     }).then(res => {
-      console.log(res)
+      console.log(res.data.courses)
+      this.courseLists = res.data.courses
     }).catch(err => {
       console.log('获取课程信息失败' + err)
     })

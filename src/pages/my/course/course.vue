@@ -1,6 +1,6 @@
 <template>
   <div class="my">
-    <side-bar :myLists = 'myLists'></side-bar>
+    <side-bar :myLists = 'myLists' :subTitle = 'false' @childHanandler='child' ></side-bar>
     <div class="right-container">
       <div class="aside-main-width ">
         <div class="course-top">
@@ -35,14 +35,14 @@
                   <p class="item-cont">知识图谱课程介绍</p>
                 </div>
               </div>
-              <button class="btn">继续学习</button>
+              <button class="btn"><router-link :to="{path: '/mytask', query: {courseId: courseId}}">继续学习</router-link></button>
             </div>
           </div>
         </div>
       </div>
       <div class="aside-main-width">
         <div class="course-content">
-          <div class="chapter" v-for="(item,index) in courseChapterList" :key="index">
+          <div class="chapter" :class="{active: currentIndex === index}" v-for="(item,index) in courseChapterList" :key="index">
             <div class="top">
               <p class="number">第{{ index+1 }}章</p>
               <p class="name">{{ item.name }}</p>
@@ -57,7 +57,7 @@
 </template>
 
 <script>
-import SideBar from '../../../components/side-bar'
+import SideBar from '../../../components/side-bar-course'
 import CanvasCircle from '../../../components/canvasCircle'
 export default {
   components: {
@@ -66,15 +66,17 @@ export default {
   },
   data () {
     return {
+      currentIndex: 0,
+      courseId: '',
       percent: 35,
       myLists: [
         {
-          name: '第三章：条件控制',
+          title: '第三章：预览课程',
           path: 'study',
           active: true
         },
         {
-          name: '第四章：框架介绍',
+          title: '第四章：框架介绍',
           path: 'myinfo',
           active: false
         }
@@ -101,6 +103,26 @@ export default {
           introduction: '完成本课程，你将积累丰富的项目实操经验。我们的课程由多个实战项目组成，设计了能够夯实基础知识、具有超强针对性的实操训练。我们不仅仅培养学员的算法能力跟工程能力，还保证学员能够“学完之后真的能做出来”。'
         }
       ]
+    }
+  },
+  created () {
+    let userId = sessionStorage.userId
+    let courseId = location.href.split('?')[1].split('=')[1]
+    this.courseId = courseId
+    this.$axios.post('/api/course/getusercourse', {
+      params: {
+        courseid: courseId,
+        userid: userId
+      }
+    }).then(res => {
+      console.log(res)
+    }).catch(err => {
+      console.log(err)
+    })
+  },
+  methods: {
+    child (index) {
+      this.currentIndex = index
     }
   }
 }
@@ -261,6 +283,9 @@ export default {
       padding-top: 32px;
       padding-left: 80px;
     }
+  }
+  .active{
+    background: #eff7ff;
   }
 }
 </style>
