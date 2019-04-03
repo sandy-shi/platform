@@ -5,7 +5,21 @@
     </div>
     <div class="avatar center-block">
     </div>
-    <ul class="sidebar-ul">
+    <!-- 递归组件的时候在ul中做循环，有子菜单 -->
+    <ul class="sidebar-ul" v-for="(item, index) in myLists" :key="index" v-if="subTitle">
+      <tree :model="item" :chaptorId = "index" @videoTitle = "videoTitle"></tree>
+    </ul>
+    <!-- 只有一个目录的情况 -->
+    <ul class="sidebar-ul" v-if="!subTitle">
+      <li
+        class="sidebar-li text-center"
+        :class="{active: currentIndex === index}"
+        v-for="(items,index) in myLists" :key="index"
+        @click="clickChapter(index)">
+        {{ items.title }}
+      </li>
+    </ul>
+    <!-- <ul class="sidebar-ul">
       <li v-if="!subTitle"
         class="sidebar-li text-center"
         :class="{active: currentIndex === index}"
@@ -13,20 +27,39 @@
         @click="clickChapter(index)">
         {{ items.title }}
       </li>
-      <li class="sidebar-li text-center" v-if="subTitle" v-for="(items,index) in myLists" :key="index">
-        {{ items.title }}
-        <ul v-if="items.sections.length > 0" v-show="showSubCaptor">
-          <li v-for="(subItem, subId) in items.sections" :key="subId">{{subItem.title}}</li>
+      <li class="sidebar-li" v-if="subTitle" v-for="(items,index) in myLists" :key="index" >
+        <div @click="showToggle(items)">{{ items.title }}</div>
+        <ul v-if="items.sections.length > 0" v-show="showSubCaptor" >
+          <li v-for="(subitems, subid) in items.sections" :key="subid" @click="showToggle(items, subitems)">
+            <div>{{subitems.title}}</div>
+          </li>
         </ul>
       </li>
-    </ul>
+    </ul> -->
+    <!-- <template v-for="list in this.myLists">
+      <el-submenu index="1" v-if="list.sections.length > 0" :key="list.id" :index="list.title">
+        <template slot="title">
+          <i class="el-icon-menu"></i>
+          <span slot="title">{{ list.title}}</span>
+        </template>
+        <SideBar :myLists="list.sections"></SideBar>
+      </el-submenu>
+      <el-menu-item v-else :key="list.id" :index="list.title">
+        <span>{{ list.title}}</span>
+      </el-menu-item>
+    </template> -->
     <div class="back text-center"><router-link :to="{path: '/'}">返回首页</router-link></div>
   </div>
 </template>
 
 <script>
+import Tree from '../components/side-bar-course-item'
+
 export default {
   props: ['myLists', 'subTitle'],
+  components: {
+    Tree
+  },
   data () {
     return {
       currentIndex: 0,
@@ -37,6 +70,13 @@ export default {
     clickChapter (index) {
       this.currentIndex = index
       this.$emit('childHanandler', index)
+    },
+    clickOption (index) {
+      console.log(index)
+      this.showSubCaptor = !this.showSubCaptor
+    },
+    videoTitle (title, videoSrc) {
+      this.$emit('videoInfo', title, videoSrc)
     }
   }
 }
@@ -72,16 +112,16 @@ export default {
     bottom: 32px;
     left: 4%;
   }
-  .sidebar-ul{
-    .sidebar-li{
-      color: @font-white;
-      padding: 5px 0;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    .active{
-      color: @blue;
-    }
+
+  .sidebar-li{
+    color: @font-white;
+    padding: 5px;
+    font-size: 14px;
+    cursor: pointer;
   }
+  .active{
+    color: @blue;
+  }
+
 }
 </style>

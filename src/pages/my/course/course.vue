@@ -18,7 +18,7 @@
                     <i class="el-icon-success"></i>
                     <span>已完成</span>
                   </div>
-                  <p class="item-cont"><span class="already">4</span>/31 <span>任务</span></p>
+                  <p class="item-cont"><span class="already">{{ finishTaskNum }}</span>/{{ allTaskNun }} <span>任务</span></p>
                 </div>
                 <div class="item">
                   <div class="line1">
@@ -32,7 +32,7 @@
                     <i class="el-icon-document"></i>
                     <span>下一学习任务</span>
                   </div>
-                  <p class="item-cont">知识图谱课程介绍</p>
+                  <p class="item-cont">{{ nextCatalog }}</p>
                 </div>
               </div>
               <button class="btn"><router-link :to="{path: '/mytask', query: {courseId: courseId}}">继续学习</router-link></button>
@@ -42,13 +42,13 @@
       </div>
       <div class="aside-main-width">
         <div class="course-content">
-          <div class="chapter" :class="{active: currentIndex === index}" v-for="(item,index) in courseChapterList" :key="index">
+          <div class="chapter" :class="{active: currentIndex === index}" v-for="(item,index) in myLists" :key="index">
             <div class="top">
               <p class="number">第{{ index+1 }}章</p>
-              <p class="name">{{ item.name }}</p>
-              <p class="type">{{ item.type }}</p>
+              <p class="name">{{ item.title }}</p>
+              <p class="type">{{ item.label }}</p>
             </div>
-            <p class="content">{{ item.introduction }}</p>
+            <p class="content">{{ item.content }}</p>
           </div>
         </div>
       </div>
@@ -68,41 +68,16 @@ export default {
     return {
       currentIndex: 0,
       courseId: '',
-      percent: 35,
-      myLists: [
-        {
-          title: '第三章：预览课程',
-          path: 'study',
-          active: true
-        },
-        {
-          title: '第四章：框架介绍',
-          path: 'myinfo',
-          active: false
-        }
-      ],
-      courseChapterList: [
-        {
-          name: '预览课程',
-          type: '基础知识',
-          introduction: '完成本课程，你将积累丰富的项目实操经验。我们的课程由多个实战项目组成，设计了能够夯实基础知识、具有超强针对性的实操训练。我们不仅仅培养学员的算法能力跟工程能力，还保证学员能够“学完之后真的能做出来”。'
-        },
-        {
-          name: 'Win版Python基础环境安装',
-          type: '基础知识+项目实战',
-          introduction: '完成本课程，你将积累丰富的项目实操经验。我们的课程由多个实战项目组成，设计了能够夯实基础知识、具有超强针对性的实操训练。我们不仅仅培养学员的算法能力跟工程能力，还保证学员能够“学完之后真的能做出来”。'
-        },
-        {
-          name: '预览课程',
-          type: '基础知识',
-          introduction: '完成本课程，你将积累丰富的项目实操经验。我们的课程由多个实战项目组成，设计了能够夯实基础知识、具有超强针对性的实操训练。我们不仅仅培养学员的算法能力跟工程能力，还保证学员能够“学完之后真的能做出来”。'
-        },
-        {
-          name: 'Win版Python基础环境安装',
-          type: '基础知识',
-          introduction: '完成本课程，你将积累丰富的项目实操经验。我们的课程由多个实战项目组成，设计了能够夯实基础知识、具有超强针对性的实操训练。我们不仅仅培养学员的算法能力跟工程能力，还保证学员能够“学完之后真的能做出来”。'
-        }
-      ]
+      // 学习进度
+      percent: '',
+      // 已完成任务数
+      finishTaskNum: '',
+      // 总任务数
+      allTaskNun: '',
+      // 下一学习任务
+      nextCatalog: '',
+      // 课程信息
+      myLists: []
     }
   },
   created () {
@@ -115,7 +90,11 @@ export default {
         userid: userId
       }
     }).then(res => {
-      console.log(res)
+      this.myLists = res.data.catalogs
+      this.percent = res.data.course.dopercent
+      this.finishTaskNum = res.data.overnum
+      this.allTaskNun = res.data.tasknum
+      this.nextCatalog = res.data.nextcatalog.title
     }).catch(err => {
       console.log(err)
     })

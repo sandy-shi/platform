@@ -5,6 +5,7 @@
       :playsinline="true"
       :options="playerOptions"
     ></video-player>
+    <p>{{ this.videoSrc }}</p>
   </div>
 </template>
 
@@ -24,6 +25,7 @@ export default {
         sources: [{
           type: 'video/mp4',
           src: 'https://cdn.theguardian.tv/webM/2015/07/20/150716YesMen_synd_768k_vp8.webm' // url地址
+          // src: 'https://cdn.theguardian.tv/webM/2015/07/20/150716YesMen_synd_768k_vp8.webm'
         }],
         // poster: '../../static/images/test.jpg', // 你的封面地址
         // width: document.documentElement.clientWidth,
@@ -36,6 +38,10 @@ export default {
         }
       }
     }
+  },
+  props: ['videoSrc'],
+  created () {
+    // console.log(this)
   }
 }
 </script>
