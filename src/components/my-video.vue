@@ -13,7 +13,14 @@
 export default {
   data () {
     return {
-      playerOptions: {
+      src: 'http://localhost:8090/static//upload/video/course/2019/04/03/zhou.mp4'
+    }
+  },
+  props: ['videoSrc'],
+  computed: {
+    // data里不要用this,data是非响应式的，所以把option放到这里，方便src取值
+    playerOptions () {
+      const playerOptionObj = {
         playbackRates: [0.7, 1.0, 1.5, 2.0], // 播放速度
         autoplay: false, // 如果true,浏览器准备好时开始回放。
         muted: false, // 默认情况下将会消除任何音频。
@@ -24,8 +31,7 @@ export default {
         fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
         sources: [{
           type: 'video/mp4',
-          src: 'https://cdn.theguardian.tv/webM/2015/07/20/150716YesMen_synd_768k_vp8.webm' // url地址
-          // src: 'https://cdn.theguardian.tv/webM/2015/07/20/150716YesMen_synd_768k_vp8.webm'
+          src: this.src // url地址
         }],
         // poster: '../../static/images/test.jpg', // 你的封面地址
         // width: document.documentElement.clientWidth,
@@ -37,11 +43,11 @@ export default {
           fullscreenToggle: true // 全屏按钮
         }
       }
+      return playerOptionObj
     }
   },
-  props: ['videoSrc'],
   created () {
-    // console.log(this)
+    console.log(this.videoSrc + '--src')
   }
 }
 </script>

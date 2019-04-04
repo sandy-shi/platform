@@ -10,7 +10,7 @@
       <SideBar :myLists = 'this.myLists'></SideBar>
     </el-menu> -->
     <div class="right-container">
-      <p class="title text-center">任务一：take</p>
+      <p class="title text-center">{{ videoSrc }}</p>
       <my-video :videoSrc = 'videoSrc'></my-video>
     </div>
   </div>
@@ -85,6 +85,9 @@ export default {
   created () {
 
   },
+  updated () {
+
+  },
   methods: {
     toggleClick () {
       this.isCollapse = !this.isCollapse
@@ -92,7 +95,7 @@ export default {
     videoInfo (title, videoSrc) {
       this.title = title
       this.videoSrc = videoSrc
-      console.log(this.videoSrc)
+      console.log(this.title + 'title')
     }
   }
 }

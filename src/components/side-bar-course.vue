@@ -7,7 +7,7 @@
     </div>
     <!-- 递归组件的时候在ul中做循环，有子菜单 -->
     <ul class="sidebar-ul" v-for="(item, index) in myLists" :key="index" v-if="subTitle">
-      <tree :model="item" :chaptorId = "index" @videoTitle = "videoTitle"></tree>
+      <tree :model="item" :chaptorId = "index" @videotitle = "videotitle"></tree>
     </ul>
     <!-- 只有一个目录的情况 -->
     <ul class="sidebar-ul" v-if="!subTitle">
@@ -75,7 +75,8 @@ export default {
       console.log(index)
       this.showSubCaptor = !this.showSubCaptor
     },
-    videoTitle (title, videoSrc) {
+    videotitle (title, videoSrc) {
+      console.log(title)
       this.$emit('videoInfo', title, videoSrc)
     }
   }

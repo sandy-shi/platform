@@ -44,10 +44,16 @@ export default {
           catalogid: this.model.id
         }
       }).then(res => {
-        this.title = res.data.video[0].title
-        this.videoSrc = res.data.video[0].video.video
-        console.log(this.videoSrc)
-        this.$emit('videoTitle', this.title, this.videoSrc)
+        console.log(res)
+        if (res.data.video[0].type === 'section') {
+          this.title = res.data.video[0].title
+          this.videoSrc = res.data.video[0].video.video
+        } else {
+          this.title = res.data.video[0].title
+          this.videoSrc = ''
+        }
+        console.log(this.title)
+        this.$emit('videotitle', this.title, this.videoSrc)
       }).catch(err => {
         console.log(err)
       })
