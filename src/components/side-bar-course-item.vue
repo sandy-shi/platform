@@ -52,8 +52,9 @@ export default {
           this.title = res.data.video[0].title
           this.videoSrc = ''
         }
-        console.log(this.title)
-        this.$emit('videotitle', this.title, this.videoSrc)
+        console.log(this.videoSrc)
+        // this.$emit('videotitle', this.title, this.videoSrc)
+        this.$store.commit('changeVideoSrc', this.videoSrc)
       }).catch(err => {
         console.log(err)
       })

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Layout from './components/layout'
 import router from './router'
+import store from './store'
 // 引入elementUi
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
@@ -29,5 +30,6 @@ Vue.prototype.$axios = Axios
 new Vue({
   el: '#app',
   router,
+  store,
   render: h => h(Layout)
 })

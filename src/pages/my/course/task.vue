@@ -10,13 +10,14 @@
       <SideBar :myLists = 'this.myLists'></SideBar>
     </el-menu> -->
     <div class="right-container">
-      <p class="title text-center">{{ videoSrc }}</p>
+      <p class="title text-center">{{ cont }}</p>
       <my-video :videoSrc = 'videoSrc'></my-video>
     </div>
   </div>
 </template>
 
 <script>
+import {mapState} from 'vuex'
 import SideBar from '../../../components/side-bar-course'
 import MyVideo from '../../../components/my-video'
 
@@ -28,8 +29,8 @@ export default {
   data () {
     return {
       courseId: '',
-      title: '',
-      videoSrc: '',
+      // title: '',
+      // videoSrc: '',
       isCollapse: false, // 菜单展开功能
       myLists: [
         {
@@ -83,10 +84,34 @@ export default {
     }
   },
   created () {
-
+    this.videoSrc = this.$store.state.videoSrc
+    console.log(this.videoSrc + '--videoSrc')
+    console.log(this.$store)
   },
   updated () {
 
+  },
+  // computed: {
+  //   cont () {
+  //     return this.$store.state.taskVideoSrc
+  //   },
+  //   title () {
+  //     return this.$store.state.taskVideoTitle
+  //   }
+  // },
+  // computed: mapState({
+  //   // 1.箭头函数
+  //   cont: state => state.taskVideoSrc,
+  //   // 2.传字符串参数’taskVideoSrc‘等同于state => state.taskVideoSrc
+  //   coutLis: 'taskVideoSrc',
+  //   title: state => state.taskVideoTitle
+  // }),
+  computed: {
+    ...mapState({
+      cont: 'taskVideoSrc'
+      // coutLis: 'taskVideoSrc',
+      // title: state => state.taskVideoTitle
+    })
   },
   methods: {
     toggleClick () {
