@@ -2,7 +2,7 @@
 <template>
   <div class="course-list">
     <el-row :gutter="20">
-      <el-col :span="6" v-for="(item, index) in courseData" :key='index'>
+      <el-col :lg="6" :md="4" :xs="12" v-for="(item, index) in courseData" :key='index'>
         <div class="grid-content bg-purple course-item">
           <div class="course-img">
             <a><router-link to="/info-machine-learning"><img :src="item.pic"></router-link></a>

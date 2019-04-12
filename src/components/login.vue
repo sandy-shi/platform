@@ -18,6 +18,7 @@
           <input type="checkbox" />
           <span>7天内自动登陆</span>
         </div>
+        <p class="errtext">{{ errorText }}</p>
         <button class="btn" @click="login">立即登陆</button>
         <div class="lg-bottom">
           <a class="find">找回密码</a>
@@ -114,7 +115,12 @@ export default {
             register2url: register2url
           }
         }).then(res => {
-
+          this.$message({
+            message: '请前往邮箱查看',
+            showClose: true,
+            center: true,
+            type: 'success'
+          })
         }).catch(err => {
           console.log('邮箱数据异常', err)
         })
@@ -133,13 +139,15 @@ export default {
           password: this.password
         }
       }).then(res => {
-        console.log(res.data.userid)
         if (res.data.code === 2000) {
           // 把登录信息存储到session中
           sessionStorage.mystudy = this.mystudy
           sessionStorage.useremail = this.loginEmail
           sessionStorage.userId = res.data.userid
           this.$router.push({path: '/'})
+        }
+        if (res.data.code === 2001) {
+          this.errorText = '用户名密码不正确'
         }
       }).catch(err => {
         console.log('登陆失败', err)

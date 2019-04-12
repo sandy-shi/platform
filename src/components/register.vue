@@ -88,6 +88,12 @@ export default {
             }
           }).then(res => {
             if (res.status === 200) {
+              this.$message({
+                message: '注册成功，请登录',
+                showClose: true,
+                center: true,
+                type: 'success'
+              })
               this.$router.push({path: '/login'})
             }
           }).catch(err => {

@@ -2,12 +2,12 @@
   <div class="">
     <div class="content" @click="clickHandler()">
       <div class="chapter-name">
-        <p class="fname">第{{ indexs + 1 }}章：{{ item.title }}</p>
+        <p class="fname">{{ item.title }}</p>
         <span class="rowdown" v-show="rowdown" v-if="item.sections.length > 0"></span>
         <span class="rowup" v-show="rowup" v-if="item.sections.length > 0"></span>
       </div>
       <div class="subchapter" v-show="isSubchapter" v-for="(sub, subid) in item.sections" :key="subid">
-        <p class="subname">{{ indexs+1 }}.{{ subid+1 }}  {{ sub.title }}</p>
+        <p class="subname">{{ sub.title }}</p>
       </div>
     </div>
   </div>

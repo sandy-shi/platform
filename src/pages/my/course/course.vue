@@ -32,10 +32,10 @@
                     <i class="el-icon-document"></i>
                     <span>下一学习任务</span>
                   </div>
-                  <p class="item-cont">{{ nextCatalog }}</p>
+                  <p class="item-cont">{{ nextCatalogTitle }}</p>
                 </div>
               </div>
-              <button class="btn"><router-link :to="{path: '/mytask', query: {courseId: courseId}}">继续学习</router-link></button>
+              <button class="btn"><router-link :to="{path: '/mytask', query: {courseId: courseId, catalogId: nextCatalogId}}">继续学习</router-link></button>
             </div>
           </div>
         </div>
@@ -45,7 +45,7 @@
           <div class="chapter" :class="{active: currentIndex === index}" v-for="(item,index) in myLists" :key="index">
             <div class="top">
               <p class="number">第{{ index+1 }}章</p>
-              <p class="name">{{ item.title }}</p>
+              <p class="name">{{ item.title|chaptorSlice }}</p>
               <p class="type">{{ item.label }}</p>
             </div>
             <p class="content">{{ item.content }}</p>
@@ -75,7 +75,8 @@ export default {
       // 总任务数
       allTaskNun: '',
       // 下一学习任务
-      nextCatalog: '',
+      nextCatalogTitle: '',
+      nextCatalogId: '',
       // 课程信息
       myLists: []
     }
@@ -90,11 +91,13 @@ export default {
         userid: userId
       }
     }).then(res => {
+      console.log(res)
       this.myLists = res.data.catalogs
       this.percent = res.data.course.dopercent
       this.finishTaskNum = res.data.overnum
       this.allTaskNun = res.data.tasknum
-      this.nextCatalog = res.data.nextcatalog.title
+      this.nextCatalogTitle = res.data.nextcatalog.title
+      this.nextCatalogId = res.data.nextcatalog.id
     }).catch(err => {
       console.log(err)
     })
@@ -102,6 +105,11 @@ export default {
   methods: {
     child (index) {
       this.currentIndex = index
+    }
+  },
+  filters: {
+    chaptorSlice (val) {
+      return val.split('：')[1]
     }
   }
 }

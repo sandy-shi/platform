@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
+// import {mapState} from 'vuex'
 export default {
   data () {
     return {
@@ -32,7 +32,7 @@ export default {
         fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
         sources: [{
           type: 'video/mp4',
-          src: this.$store.state.taskVideoSrc // url地址
+          src: this.$store.state.taskVideoSrc
         }],
         // poster: '../../static/images/test.jpg', // 你的封面地址
         // width: document.documentElement.clientWidth,
@@ -46,9 +46,6 @@ export default {
       }
       return playerOptionObj
     }
-  },
-  created () {
-    console.log(this.videoSrc + '--src')
   }
 }
 </script>

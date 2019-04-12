@@ -1,7 +1,7 @@
 <template>
   <div class="my">
 
-    <side-bar :myLists = 'myLists' :subTitle = 'true' @videoInfo = 'videoInfo'></side-bar>
+    <side-bar :myLists = 'myLists' :subTitle = 'true'></side-bar>
     <!-- <el-menu
       class="el-menu-vertical-demo"
       :collapse="isCollapse"
@@ -10,8 +10,8 @@
       <SideBar :myLists = 'this.myLists'></SideBar>
     </el-menu> -->
     <div class="right-container">
-      <p class="title text-center">{{ cont }}</p>
-      <my-video :videoSrc = 'videoSrc'></my-video>
+      <p class="title text-center">{{ title }}</p>
+      <my-video></my-video>
     </div>
   </div>
 </template>
@@ -34,26 +34,33 @@ export default {
       isCollapse: false, // 菜单展开功能
       myLists: [
         {
-          title: 'Python基础语法',
+          title: '第一章：Python基础语法',
           capter_id: 3,
           id: 3,
           active: false,
-          sections: []
+          sections: [
+            {
+              title: '1.1 课程介绍',
+              capter_id: 3,
+              active: false,
+              id: 10
+            }
+          ]
         },
         {
-          title: 'Python工程结构',
+          title: '第二章：Python工程结构',
           capter_id: 4,
           id: 4,
           active: false,
           sections: [
             {
-              title: '工程结构与命名规范',
+              title: '2.1工程结构与命名规范',
               capter_id: 4,
               active: false,
               id: 5
             },
             {
-              title: '模块与包',
+              title: '2.2模块与包',
               capter_id: 4,
               active: false,
               id: 6
@@ -61,19 +68,19 @@ export default {
           ]
         },
         {
-          title: '面向对象',
+          title: '第三章：面向对象',
           capter_id: 5,
           id: 7,
           active: false,
           sections: [
             {
-              title: '什么是面向对象',
+              title: '3.1什么是面向对象',
               capter_id: 5,
               active: false,
               id: 8
             },
             {
-              title: '构造函数',
+              title: '3.2构造函数',
               capter_id: 5,
               active: false,
               id: 9
@@ -82,14 +89,6 @@ export default {
         }
       ]
     }
-  },
-  created () {
-    this.videoSrc = this.$store.state.videoSrc
-    console.log(this.videoSrc + '--videoSrc')
-    console.log(this.$store)
-  },
-  updated () {
-
   },
   // computed: {
   //   cont () {
@@ -108,19 +107,34 @@ export default {
   // }),
   computed: {
     ...mapState({
-      cont: 'taskVideoSrc'
+      title: 'taskVideoTitle'
       // coutLis: 'taskVideoSrc',
       // title: state => state.taskVideoTitle
+    })
+  },
+  created () {
+    let userId = sessionStorage.userId
+    let courseId = location.href.split('?')[1].split('&')[0].split('=')[1]
+    let catalogId = location.href.split('?')[1].split('&')[1].split('=')[1]
+    this.$axios.post('/api/course/play', {
+      params: {
+        courseid: courseId,
+        userid: userId,
+        catalogid: catalogId
+      }
+    }).then(res => {
+      console.log(res)
+      let title = res.data.video[0].title
+      let videoSrc = res.data.video[0].video.video
+      this.$store.commit('changeVideoTitle', title)
+      this.$store.commit('changeVideoSrc', videoSrc)
+    }).catch(err => {
+      console.log('获取信息失败', err)
     })
   },
   methods: {
     toggleClick () {
       this.isCollapse = !this.isCollapse
-    },
-    videoInfo (title, videoSrc) {
-      this.title = title
-      this.videoSrc = videoSrc
-      console.log(this.title + 'title')
     }
   }
 }
